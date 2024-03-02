@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  node-api:
+    build: .
+    ports:
+      - "9001:9000"
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: Jeremiah-Ropo
+      MONGO_INITDB_ROOT_PASSWORD: Jeremiah59
