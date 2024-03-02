@@ -1,13 +1,9 @@
-// const { BACKEND_BASE_URL } = '../config';
-
-const EmailVerificationTemplate = ({ name, link }: { name: string; link: string }) => {
+const WelcomeTemplate = ({ name }: { name: string; }) => {
   return {
     subject: `Confirm your email`,
       body: `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
                 <h2>Welcome to Tride</h2>
-                <p>Hello ${name},<br><br>Welcome to Viascrow, we are on a mission to make both the buyer and seller trust much better, thank you for coming on this journey with us.<br><br>Let’s verify your account first to get started.</p>
-                <br>
-                <a href="${link}" class="button">Verify Account</a>
+                <p>Hello ${name},<br><br>Welcome to DLCF FUTA, we love you, thank you for registering.</p>
                 <br><br><br>
                 <p>Love,<br>The Viascrow Team.</p></td></tr>
                 <tr><td class="footer">
@@ -30,4 +26,4 @@ const EmailVerificationTemplate = ({ name, link }: { name: string; link: string 
   };
 };
 
-export default EmailVerificationTemplate;
+export default WelcomeTemplate;

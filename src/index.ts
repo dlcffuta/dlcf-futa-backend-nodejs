@@ -1,6 +1,10 @@
 import "dotenv/config";
 import "reflect-metadata";
-import express, { Response, Request} from "express";
+import { connectDb } from "./utils/connection";
+connectDb();
+
+import express, { Response, Request } from "express";
+
 import cors from "cors";
 import helmet from "helmet";
 import fs from "fs";
@@ -9,20 +13,18 @@ import morgan from "morgan";
 import routes from "./routes";
 import bodyParser from "body-parser";
 
-import { NODE_ENV, PORT } from "./config";
+import { NODE_ENV, PORT, CLIENT_URLS } from "./config";
 
-import "../utils/connection";
-import "../utils/response/customSuccess";
+import "./utils/response/customSuccess";
 import { errorHandler } from "./middlewares/errorHandler";
-import { CustomError } from "../utils/response/custom-error/customError";
-
+import { CustomError } from "./utils/response/custom-error/customError";
 
 export const app = express();
-
-let whitelist: string[] = ["https://payment-system-app.com"];
+const clients_urls = CLIENT_URLS.split(", ");
+let whitelist: string[] = clients_urls;
 
 if (NODE_ENV !== "production") {
-  whitelist = [...whitelist,  "http://localhost:9000"];
+  whitelist = [...whitelist, "http://localhost:9000"];
 }
 
 const corsOptions = {
@@ -76,7 +78,7 @@ app.use("/", routes);
 
 // Error Handler on Routes that does not exist
 app.use("*", (req, res, next) => {
-  return next(new CustomError(404, "Route Not Found"));
+  return next(new CustomError(404, "General", "Route Not Found"));
 });
 
 // Error Handler

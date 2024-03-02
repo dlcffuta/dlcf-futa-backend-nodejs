@@ -1,10 +1,10 @@
-import { Router } from "express"; 
+import { Router } from 'express';
 
-import userRoutes from "./user";
+import memberRoutes from './member';
 
 const router = Router();
 
 // * Collective routes: Default (index.ts) route
-router.use("/user", userRoutes);
+router.use('/member', memberRoutes);
 
 export default router;

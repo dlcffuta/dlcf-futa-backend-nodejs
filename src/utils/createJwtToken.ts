@@ -1,11 +1,12 @@
 import jwt from "jsonwebtoken";
 
 import { JWT_EXPIRATION, JWT_SECRET } from "../config";
+import { EUserType } from "../interfaces";
 
 export type JwtPayload = {
   user_id: string;
   is_verified: boolean;
-  role: string;
+  role: EUserType;
   email: string;
   created_at?: string;
 };

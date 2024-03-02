@@ -1,1 +1,4 @@
-export * from './user.interface'
+export * from './member.interface';
+export * from './admin.interface';
+export * from './worker.interface';
+export * from './centre.interface';

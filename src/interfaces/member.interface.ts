@@ -1,4 +1,6 @@
-export interface IUser {
+import { Document } from 'mongoose';
+
+export interface IMember {
     firstName: string;
     lastName: string;
     email: string;
@@ -40,21 +42,12 @@ export interface MemberInputDTO {
     level: string;
     centre: string;
     hall: string;
-    userType: EUserType;
 };
 
-export interface AdminInputDTO { 
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-    phoneNumber: string;
-    userType: EUserType;
-};
 
 export interface UserLoginDTO { 
     email: string;
     password: string;
 };
 
-export interface IUserDocument extends IUser, Document { }; 
+export interface IMemberDocument extends IMember, Document { }; 
