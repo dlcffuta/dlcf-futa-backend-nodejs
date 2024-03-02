@@ -1,7 +1,7 @@
 import { IUser, IUserDocument } from "interfaces/user.interface";
 import { Schema, model } from "mongoose";
 
-const UserSchemaField: Record<keyof IUser, any> = {
+const MemberSchemaField: Record<keyof IUser, any> = {
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
@@ -17,7 +17,7 @@ const UserSchemaField: Record<keyof IUser, any> = {
   token: { type: String },
 };
 
-const UserSchema = new Schema(UserSchemaField, {
+const UserSchema = new Schema(MemberSchemaField, {
   timestamps: true,
   versionKey: false,
   toJSON: {

@@ -3,12 +3,14 @@ export interface IUser {
     lastName: string;
     email: string;
     password: string;
+    phoneNumber: string;
     department: string;
     school: string;
     level: string;
     centre: string;
     hall: string;
     imageUrl: string;
+    userType: string;
     last_login: Date;
     verified: boolean;
     token: string;
@@ -27,16 +29,27 @@ export enum EUserType {
     PASTOR_LEADER = "pastor_leader",
 }
 
-export interface UserInputDTO { 
+export interface MemberInputDTO { 
     firstName: string;
     lastName: string;
     email: string;
-    password: string;
+    password?: string;
+    phoneNumber: string;
     department: string;
     school: string;
     level: string;
     centre: string;
     hall: string;
+    userType: EUserType;
+};
+
+export interface AdminInputDTO { 
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    phoneNumber: string;
+    userType: EUserType;
 };
 
 export interface UserLoginDTO { 

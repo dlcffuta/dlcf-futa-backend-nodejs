@@ -3,7 +3,7 @@ import { hashSync, hash } from "bcryptjs";
 
 import { UserModel } from "../models";
 
-import { UserInputDTO, EUserType } from "../interfaces";
+import { AdminInputDTO, EUserType } from "../interfaces";
 import {  admin } from "../config";
 
 const adminSeeder = async () => {
@@ -18,8 +18,8 @@ const adminSeeder = async () => {
 
     let password = hashSync(admin.PASSWORD);
       
-    const usersData: UserInputDTO = {
-      userType: EUserType.ADMIN,
+    const usersData: AdminInputDTO = {
+      userType: EUserType.SUPER_ADMIN,
       firstName: admin.FIRSTNAME,
       lastName: admin.LASTNAME,
       phoneNumber: admin.PHONENUMBER,

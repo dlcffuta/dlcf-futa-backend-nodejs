@@ -1,20 +1,22 @@
-import mongoose from "mongoose";
+import mongoose, { connect } from "mongoose";
+mongoose.set("strictQuery", false);
 
 import { DATABASE_URI } from "../config";
 
+const dbURI = DATABASE_URI;
+const options: Record<string, any> = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
 
-export const connectDb = async () => {
-  try {
-    await mongoose.connect(DATABASE_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
+export const connectDb = (): void => {
+  connect(dbURI)
+    .then(() => console.log("Database Connected"))
+    .catch((err) => {
+      console.log(err);
+      console.log("Database connection failed. Exiting now...");
+      process.exit();
     });
-    console.log("Database connected successfully");
-  } catch (error) {
-    console.error(new Error(error));
-  }
 };
 
 
