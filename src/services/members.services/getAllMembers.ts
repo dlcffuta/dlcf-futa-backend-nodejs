@@ -1,20 +1,30 @@
 import { NextFunction } from 'express';
 
-import { IMember, ICustomInferface } from '../../interfaces';
+import { IMember, ICustomInterface } from '../../interfaces';
 import { MemberModel } from '../../models';
 import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const getAllMemberService = async (
-    query: ICustomInferface,
-    option: ICustomInferface,
+    query: ICustomInterface,
+    option: ICustomInterface,
   next: NextFunction,
-): Promise<void | IMember> => {
+): Promise<void | Object> => {
   try {
-    const member = await MemberModel.findById({ query });
-    if (!member) {
-      return next(new CustomError(400, 'General', "Member ID is doesn't exist!"));
-    }
-    return member;
+    const { page, limit } = option;
+    
+    const member = await MemberModel.findById({ query })
+      .limit(limit * 1)
+      .skip((page - 1) * limit);
+    const total = await MemberModel.countDocuments(query);
+    const totalPages = Math.ceil(total / limit);
+
+    const result = {
+      limit,
+      member,
+      totalPages,
+      currentPage: page,
+    };
+    return result;
   } catch (error) {
     return next(new CustomError(500, 'Raw', 'Internal server', error.message));
   }

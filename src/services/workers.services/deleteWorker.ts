@@ -9,7 +9,7 @@ export const deleteWorkerService = async (id: string, next: NextFunction): Promi
     if (!existingWorker) {
       return next(new CustomError(400, 'General', "Worker ID is doesn't exist!"));
     }
-    await deleteUrl(existingWorker.imageUrl);
+    await deleteUrl(existingWorker.imageUrl.path);
     await WorkerModel.findByIdAndDelete({ _id: id });
     return 'Worker deleted successfully!';
   } catch (error) {

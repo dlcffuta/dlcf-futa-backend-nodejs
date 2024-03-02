@@ -10,8 +10,7 @@ import {
   uploadMemberProfilePictureService,
 } from '../services/members.services';
 
-import { CustomError } from '../utils/response/custom-error/customError';
-import { uploadFile } from '../utils/cloudinary';
+import { ICustomInterface } from '../interfaces';
 
 @Service()
 class MemberControllers {
@@ -41,8 +40,22 @@ class MemberControllers {
 
   getAllMembers = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const query = req.query;
-      const option = req.query;
+      const { limit, page, department, level, school, hall, dlcfCampus, lastName, firstName, email } = req.query;
+      const option: ICustomInterface = {
+        limit: limit ? parseInt(limit as string) : 20,
+        page: page ? parseInt(page as string) : 1,
+      };
+
+      const query: ICustomInterface = {}
+      if (department) query.department = { $regex: new RegExp(department as string, "i") };
+      if (level) query.level = level;
+      if (school) query.school = school;
+      if (hall) query.hall = hall;
+      if (dlcfCampus) query.dlcfCampus = dlcfCampus; 
+      if (lastName) query.lastName = { $regex: new RegExp(lastName as string, "i") };
+      if (firstName) query.firstName = { $regex: new RegExp(firstName as string, "i") };
+      if (email) query.email = { $regex: new RegExp(email as string, "i") };
+
       const members = await getAllMemberService(query, option, next);
       if (members != null) {
         res.customSuccess(200, 'Members fetched successfully', members);
@@ -76,13 +89,9 @@ class MemberControllers {
 
   uploadProfilePicture = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const file = req.file;
-      if (!file) {
-        return next(new CustomError(400, 'General', 'Please upload a file'));
-      }
-      const imageUrl = await uploadFile(file, 'profile-pictures');
-      const member = await uploadMemberProfilePictureService(req.params.id, imageUrl as string, next);
-      if (member != null) { 
+      const { path, filename } = req.file;
+      const member = await uploadMemberProfilePictureService(req.params.id, { path, filename }, next);
+      if (member != null) {
         res.customSuccess(200, 'Profile picture uploaded successfully', member);
       }
     } catch (error) {

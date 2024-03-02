@@ -9,7 +9,7 @@ export const deleteMemberService = async (id: string, next: NextFunction): Promi
     if (!existingMember) {
       return next(new CustomError(400, 'General', "Member ID is doesn't exist!"));
     }
-    await deleteUrl(existingMember.imageUrl);
+    await deleteUrl(existingMember.imageUrl.path);
     await MemberModel.findByIdAndDelete({ _id: id });
     return 'Member deleted successfully!';
   } catch (error) {

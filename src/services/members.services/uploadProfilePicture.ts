@@ -6,7 +6,7 @@ import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const uploadMemberProfilePictureService = async (
   id: string,
-  image: string,
+  image: { path: string; filename: string; },
   next: NextFunction,
 ): Promise<void | IMember> => {
   try {
@@ -14,7 +14,10 @@ export const uploadMemberProfilePictureService = async (
     if (!existingMember) {
       return next(new CustomError(400, 'General', "Member ID is doesn't exist!"));
       }
-    const uploadProfilePicture = await MemberModel.findByIdAndUpdate({ _id: id }, { imageUrl: image }, { new: true });
+    const uploadProfilePicture = await MemberModel.findByIdAndUpdate({ _id: id }, { imageUrl: {
+        path: image.path,
+        fileName: image.filename,
+    } }, { new: true });
     return uploadProfilePicture;
   } catch (error) {
     return next(new CustomError(500, 'Raw', 'Internal server', error.message));

@@ -1,19 +1,20 @@
-import { Document } from 'mongoose'; 
+import { Document } from 'mongoose';
 
 export enum ECentre {
-    ALEJOLOWO = "alejolowo",
-    APATAPITI = "apatapiti",
-    NORTHGATE = "north",
-    WESTGATE = "westgate",
-    IBULE = "ibule",
+  ALEJOLOWO = 'alejolowo',
+  APATAPITI = 'apatapiti',
+  NORTHGATE = 'north',
+  WESTGATE = 'westgate',
+  IBULE = 'ibule',
 }
 export interface ICentre {
-    name: ECentre;
-    location: string;
+  name: ECentre;
+  location: string;
 }
-  
-export interface CentreInputDTO { 
-    name: string;
-};
 
-export interface ICentreDocument extends ICentre, Document { }; 
+export interface CentreInputDTO {
+  name: string;
+  location?: string;
+}
+
+export interface ICentreDocument extends ICentre, Document {}

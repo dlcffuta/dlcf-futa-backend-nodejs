@@ -1,3 +1,3 @@
-export interface ICustomInferface {
+export interface ICustomInterface {
     [key: string]: any;
 };

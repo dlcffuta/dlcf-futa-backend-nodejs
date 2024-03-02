@@ -1,4 +1,4 @@
-import { IWorker, IWorkerDocument, EUserType } from '../interfaces';
+import { IWorker, IWorkerDocument, EUserType, ESchool, EDlcfCampus } from '../interfaces';
 import { Schema, model } from 'mongoose';
 
 const WorkerSchemaField: Record<keyof IWorker, any> = {
@@ -6,14 +6,17 @@ const WorkerSchemaField: Record<keyof IWorker, any> = {
   lastName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String },
-  dlcfCampus: { type: String },
+  dlcfCampus: { type: String, enum: EDlcfCampus },
   unit: { type: String },
   department: { type: String },
-  school: { type: String },
+  school: {
+    type: String,
+    enum: ESchool,
+  },
   level: { type: String },
   centre: { type: String },
   hall: { type: String },
-  imageUrl: { type: String },
+  imageUrl: { path: { type: String }, fileName: { type: String } },
   userType: { type: String, default: EUserType.WORKER },
   phoneNumber: { type: String },
   last_login: { type: Date },

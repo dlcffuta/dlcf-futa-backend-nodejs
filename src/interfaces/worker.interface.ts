@@ -14,7 +14,10 @@ export interface IWorker {
     level: string;
     centre: string;
     hall: string;
-    imageUrl: string;
+    imageUrl: {
+        path: string;
+        fileName: string;
+    };
     unit: string;
     userType: string;
     last_login: Date;
