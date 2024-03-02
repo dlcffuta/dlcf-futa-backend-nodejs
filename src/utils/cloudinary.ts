@@ -1,6 +1,5 @@
 import { v2 as cloudinary } from "cloudinary";
-import multer from "multer";
-import { CloudinaryStorage, Options } from "multer-storage-cloudinary";
+import { Options } from "multer-storage-cloudinary";
 import streamifier from "streamifier";
 import { Service } from "typedi";
 
@@ -27,9 +26,8 @@ export const multerOpts: cloudinaryOptions = {
   },
 };
 
-@Service()
-class CloudinaryUtil {
-  async uploadBuffer(buffer: Buffer, folder: string) {
+
+export const uploadBuffer = async (buffer: Buffer, folder: string) =>{
     // This was implemented this way because cloudinary's upload function does not return errors in a user friendly way
     return await new Promise((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream({ folder: `${APP_NAME}/${folder}` }, (error, result) => {
@@ -44,7 +42,7 @@ class CloudinaryUtil {
     });
   }
 
-  async uploadBase64(base64: string, folder: string) {
+export const uploadBase64 = async (base64: string, folder: string) => {
     // This was implemented this way because cloudinary's upload function does not return errors in a user friendly way
     return await new Promise((resolve, reject) => {
       // convert base64 string to buffer
@@ -62,19 +60,32 @@ class CloudinaryUtil {
     });
   }
 
-  async delete(url: string) {
+  export const uploadFile = async (file: Express.Multer.File, folder: string) => {
+    // This was implemented this way because cloudinary's upload function does not return errors in a user friendly way
+    return await new Promise((resolve, reject) => {
+      const uploadStream = cloudinary.uploader.upload_stream({ folder: `${APP_NAME}/${folder}` }, (error, result) => {
+        if (error) {
+          reject(new CustomError(500, "Raw", "an error uploading the file", error.message));
+        } else {
+          resolve(result?.url);
+        }
+      });
+
+      streamifier.createReadStream(file.buffer).pipe(uploadStream);
+    });
+  }
+
+export const deleteUrl = async (url: string) => {
     if (!url.includes("cloudinary")) return false;
 
-    const publicId = this.getPublicId(url);
+    const publicId = getPublicId(url);
     const { result } = await cloudinary.uploader.destroy(publicId);
 
     return result === "ok" ? true : false;
   }
 
-  getPublicId(url: string) {
+const getPublicId = (url: string) => {
     const id = url.split(APP_NAME)[1].split(".")[0];
     return APP_NAME + id;
   }
-}
 
-export default CloudinaryUtil;

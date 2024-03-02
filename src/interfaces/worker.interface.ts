@@ -8,12 +8,14 @@ export interface IWorker {
     email: string;
     password: string;
     phoneNumber: string;
+    dlcfCampus: string;
     department: string;
     school: string;
     level: string;
     centre: string;
     hall: string;
     imageUrl: string;
+    unit: string;
     userType: string;
     last_login: Date;
     verified: boolean;
@@ -33,7 +35,8 @@ export interface WorkerInputDTO {
     centre: string;
     hall: string;
     unit: string;
-    userType: EUserType;
+    dlcfCampus: string;
+    
 };
 
 export interface IWorkerDocument extends IWorker, Document { }; 

@@ -13,7 +13,7 @@ export const uploadMemberProfilePictureService = async (
     const existingMember = await MemberModel.findById({ _id: id });
     if (!existingMember) {
       return next(new CustomError(400, 'General', "Member ID is doesn't exist!"));
-    }
+      }
     const uploadProfilePicture = await MemberModel.findByIdAndUpdate({ _id: id }, { imageUrl: image }, { new: true });
     return uploadProfilePicture;
   } catch (error) {

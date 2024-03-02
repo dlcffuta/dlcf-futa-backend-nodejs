@@ -11,19 +11,17 @@ import {
 } from '../services/members.services';
 
 import { CustomError } from '../utils/response/custom-error/customError';
-import CloudinaryUtil from '../utils/cloudinary';
+import { uploadFile } from '../utils/cloudinary';
 
 @Service()
 class MemberControllers {
-  constructor() {
-   
-  }
+  constructor() {}
 
   createMember = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const newUser = await createMemberService(req.body, next);
-      if (newUser != null) {
-        res.customSuccess(201, 'User created successfully', newUser);
+      const newmember = await createMemberService(req.body, next);
+      if (newmember != null) {
+        res.customSuccess(201, 'Member created successfully', newmember);
       }
     } catch (error) {
       next(error);
@@ -32,9 +30,9 @@ class MemberControllers {
 
   getMemberById = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const user = await getMemberByIdService(req.params.id, next);
-      if (user != null) {
-        res.customSuccess(200, 'User found', user);
+      const member = await getMemberByIdService(req.params.id, next);
+      if (member != null) {
+        res.customSuccess(200, 'Member fetched successfully', member);
       }
     } catch (error) {
       next(error);
@@ -45,9 +43,9 @@ class MemberControllers {
     try {
       const query = req.query;
       const option = req.query;
-      const users = await getAllMemberService(query, option, next);
-      if (users != null) {
-        res.customSuccess(200, 'Users found', users);
+      const members = await getAllMemberService(query, option, next);
+      if (members != null) {
+        res.customSuccess(200, 'Members fetched successfully', members);
       }
     } catch (error) {
       next(error);
@@ -56,9 +54,9 @@ class MemberControllers {
 
   updateMember = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const user = await updateMemberService(req.params.id, req.body, next);
-      if (user != null) {
-        res.customSuccess(200, 'User updated successfully', user);
+      const member = await updateMemberService(req.params.id, req.body, next);
+      if (member != null) {
+        res.customSuccess(200, 'Member updated successfully', member);
       }
     } catch (error) {
       next(error);
@@ -67,9 +65,9 @@ class MemberControllers {
 
   deleteMember = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const user = await deleteMemberService(req.params.id, next);
-      if (user != null) {
-        res.customSuccess(200, 'User deleted successfully', user);
+      const member = await deleteMemberService(req.params.id, next);
+      if (member != null) {
+        res.customSuccess(200, 'Member deleted successfully', member);
       }
     } catch (error) {
       next(error);
@@ -82,10 +80,10 @@ class MemberControllers {
       if (!file) {
         return next(new CustomError(400, 'General', 'Please upload a file'));
       }
-  // let imageUrl: string | null = await new CloudinaryUtil().uploadBuffer(file, "profile-pictures");
-      const user = await uploadMemberProfilePictureService(req.params.id, file, next);
-      if (user != null) {
-        res.customSuccess(200, 'Profile picture uploaded successfully', user);
+      const imageUrl = await uploadFile(file, 'profile-pictures');
+      const member = await uploadMemberProfilePictureService(req.params.id, imageUrl as string, next);
+      if (member != null) { 
+        res.customSuccess(200, 'Profile picture uploaded successfully', member);
       }
     } catch (error) {
       next(error);
