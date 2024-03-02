@@ -34,3 +34,9 @@ export const super_admin = {
 };
 
 export const CLIENT_URLS = process.env.CLIENT_URLS;
+
+export const CLOUDINARY = {
+    CLOUD_NAME: process.env.CLOUD_NAME,
+    API_KEY: process.env.API_KEY,
+    API_SECRET: process.env.API_SECRET,
+};

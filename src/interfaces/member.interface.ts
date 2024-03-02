@@ -7,6 +7,7 @@ export interface IMember {
     password: string;
     phoneNumber: string;
     department: string;
+    dlcfCampus: string;
     school: string;
     level: string;
     centre: string;
@@ -29,6 +30,7 @@ export enum EUserType {
     WORKER = "worker",
     STUDENT_LEADER = "student_leader",
     PASTOR_LEADER = "pastor_leader",
+    DLCF_CAMPUS = "dlcf_campus",
 }
 
 export interface MemberInputDTO { 
@@ -42,8 +44,8 @@ export interface MemberInputDTO {
     level: string;
     centre: string;
     hall: string;
+    dlcfCampus: string;
 };
-
 
 export interface UserLoginDTO { 
     email: string;

@@ -5,7 +5,7 @@ import streamifier from "streamifier";
 import { Service } from "typedi";
 
 import { CLOUDINARY, APP_NAME } from "../config";
-import { CustomError } from "../utils/response/custom-error/CustomError";
+import { CustomError } from "../utils/response/custom-error/customError";
 
 declare interface cloudinaryOptions extends Options {
   params: {
@@ -20,10 +20,10 @@ cloudinary.config({
   secure: true,
 });
 
-const multerOpts: cloudinaryOptions = {
+export const multerOpts: cloudinaryOptions = {
   cloudinary: cloudinary,
   params: {
-    folder: "kyc",
+    folder: "dlcf-members",
   },
 };
 
@@ -34,7 +34,7 @@ class CloudinaryUtil {
     return await new Promise((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream({ folder: `${APP_NAME}/${folder}` }, (error, result) => {
         if (error) {
-          reject(new CustomError(500, "Raw", "an error uploading the file", null, null, error));
+          reject(new CustomError(500, "Raw", "an error uploading the file", error.message));
         } else {
           resolve(result);
         }
@@ -53,7 +53,7 @@ class CloudinaryUtil {
 
       const uploadStream = cloudinary.uploader.upload_stream({ folder: `${APP_NAME}/${folder}` }, (error, result) => {
         if (error) {
-          reject(new CustomError(500, "Raw", "an error uploading the file", null, null, error));
+          reject(new CustomError(500, "Raw", "an error uploading the file", error.message));
         } else {
           resolve(result?.url);
         }

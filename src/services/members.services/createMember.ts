@@ -6,6 +6,11 @@ import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const createMemberService = async (payload: MemberInputDTO, next: NextFunction): Promise<void | IMember> => {
   try {
+    const existingMember = await MemberModel.exists({ email: payload.email });
+    if (existingMember) {
+      return next(new CustomError(400, 'General', 'Member already exists'));
+      }
+      
     const newMember = await MemberModel.create({
       firstName: payload.firstName,
       lastName: payload.lastName,
@@ -15,7 +20,8 @@ export const createMemberService = async (payload: MemberInputDTO, next: NextFun
       school: payload.school,
       level: payload.level,
       centre: payload.centre,
-      hall: payload.hall,
+        hall: payload.hall,
+      dlcfCampus: payload.dlcfCampus,
     });
     return newMember;
   } catch (error) {

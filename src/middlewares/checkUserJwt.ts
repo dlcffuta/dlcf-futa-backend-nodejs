@@ -20,11 +20,10 @@ export const checkUserJwt = (req: Request, res: Response, next: NextFunction) =>
     req.jwtPayload = jwtPayload as JwtPayload;
     next();
   } catch (error) {
-    next(new CustomError(401, "JWT error", error));
+    next(new CustomError(401, "Validation", "JWT error", error.message));
   }
-
-  
 };
+
 
 // refresh and send a new token on every request
 // export const refreshToken = (req: Request, res: Response, next: NextFunction) => {

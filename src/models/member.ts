@@ -6,6 +6,7 @@ const MemberSchemaField: Record<keyof IMember, any> = {
   lastName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String },
+  dlcfCampus: { type: String },
   department: { type: String },
   school: { type: String },
   level: { type: String },
