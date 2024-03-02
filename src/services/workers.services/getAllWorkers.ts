@@ -10,7 +10,7 @@ export const getAllWorkerService = async (
 ): Promise<void | Object> => {
   try {
     let { page, limit } = option;
-    const worker = await WorkerModel.find({ query })
+    const worker = await WorkerModel.find(query)
       .limit(limit * 1)
       .skip((page - 1) * limit);
 

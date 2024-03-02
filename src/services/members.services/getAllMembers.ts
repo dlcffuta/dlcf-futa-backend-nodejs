@@ -12,7 +12,7 @@ export const getAllMemberService = async (
   try {
     const { page, limit } = option;
     
-    const member = await MemberModel.findById({ query })
+    const member = await MemberModel.find(query)
       .limit(limit * 1)
       .skip((page - 1) * limit);
     const total = await MemberModel.countDocuments(query);
