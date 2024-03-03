@@ -38,7 +38,6 @@
     "node-cache": "^5.1.2",
     "nodemailer": "^6.9.4",
     "reflect-metadata": "^0.1.13",
-    "rimraf": "^5.0.5",
     "streamifier": "^0.1.1",
     "typedi": "^0.10.0",
     "validator": "^13.6.0"
