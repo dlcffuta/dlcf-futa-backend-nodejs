@@ -1,12 +1,13 @@
 import { NextFunction } from 'express';
 
-import { IWorker, WorkerInputDTO } from '../../interfaces';
+import { IWorker } from '../../interfaces';
 import { WorkerModel } from '../../models';
 import { CustomError } from '../../utils/response/custom-error/customError';
+import { UpdateQuery } from 'mongoose';
 
 export const updateWorkerService = async (
   id: string,
-  payload: WorkerInputDTO,
+  payload: UpdateQuery<IWorker>,
   next: NextFunction,
 ): Promise<void | IWorker> => {
   try {
@@ -14,7 +15,7 @@ export const updateWorkerService = async (
     if (!existingWorker) {
       return next(new CustomError(400, 'General', "Worker ID is doesn't exist!"));
     }
-    const updatedWorker = await WorkerModel.findByIdAndUpdate({ _id: id }, { payload }, { new: true });
+    const updatedWorker = await WorkerModel.findByIdAndUpdate({ _id: id }, payload, { new: true });
     return updatedWorker;
   } catch (error) {
     return next(new CustomError(500, 'Raw', 'Internal server', error.message));

@@ -3,6 +3,10 @@ import { NextFunction } from 'express';
 import { IWorker, WorkerInputDTO } from '../../interfaces';
 import { WorkerModel } from '../../models';
 import { CustomError } from '../../utils/response/custom-error/customError';
+import { EmailService } from '../../utils/notification';
+
+
+const emailService = new EmailService();
 
 export const createWorkerService = async (payload: WorkerInputDTO, next: NextFunction): Promise<void | IWorker> => {
   try {
@@ -24,6 +28,8 @@ export const createWorkerService = async (payload: WorkerInputDTO, next: NextFun
       dlcfCampus: payload.dlcfCampus,
       unit: payload.unit,
     });
+
+    await emailService.welcome(payload.email, payload.firstName);
     return newWorker;
   } catch (error) {
     return next(new CustomError(500, 'Raw', 'Internal server', error.message));

@@ -15,8 +15,9 @@ export class EmailService {
   constructor() {}
   private async sendEmail({ email, body, subject }: SendEmailArgs) {
     const transporter = nodemailer.createTransport({
-      host: mailer.HOST,
       port: mailer.PORT,
+      service: mailer.SERVICE,
+      // host: mailer.HOST,
       // secure: mailer.SECURE,
       auth: {
         user: mailer.USERNAME,

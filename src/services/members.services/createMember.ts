@@ -3,6 +3,9 @@ import { NextFunction } from 'express';
 import { IMember, MemberInputDTO } from '../../interfaces';
 import { MemberModel } from '../../models';
 import { CustomError } from '../../utils/response/custom-error/customError';
+import { EmailService } from '../../utils/notification';
+
+const emailService = new EmailService();
 
 export const createMemberService = async (payload: MemberInputDTO, next: NextFunction): Promise<void | IMember> => {
   try {
@@ -23,6 +26,9 @@ export const createMemberService = async (payload: MemberInputDTO, next: NextFun
         hall: payload.hall,
       dlcfCampus: payload.dlcfCampus,
     });
+
+    await emailService.welcome(payload.email, payload.firstName);
+    
     return newMember;
   } catch (error) {
     return next(new CustomError(500, 'Raw', 'Internal server', error.message));
