@@ -5,10 +5,12 @@ import { WorkerModel } from '../../models';
 import { CustomError } from '../../utils/response/custom-error/customError';
 import { EmailService } from '../../utils/notification';
 
-
 const emailService = new EmailService();
 
-export const createWorkerService = async (payload: WorkerInputDTO, next: NextFunction): Promise<void | IWorker> => {
+export const createWorkerService = async (
+  payload: WorkerInputDTO,
+  next: NextFunction,
+): Promise<void | IWorker> => {
   try {
     const existingWorker = await WorkerModel.exists({ email: payload.email });
     if (existingWorker) {
