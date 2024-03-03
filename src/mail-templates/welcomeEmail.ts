@@ -72,9 +72,9 @@ const WelcomeTemplate = ({ name }: { name: string }) => {
         <div class="footer">
             <p>Copyright &copy; 2024 ${APP_NAME} Limited. All rights reserved.</p>
             <div>
-                <a href="https://twitter.com/FutaDlcf" target="_blank"><img src="uploads/images/twitter.png" alt="Twitter"></a>
-                <a href="https://facebook.com/futadlcf" target="_blank"><img src="uploads/images/facebook.png" alt="Facebook"></a>
-                <a href="https://www.instagram.com/futadlcf/" target="_blank"><img src="uploads/images/instagram.png" alt="Instagram"></a>
+                <a href="https://twitter.com/FutaDlcf" target="_blank"><img src="${BACKEND_BASE_URL}/uploads/images/twitter.png" alt="Twitter"></a>
+                <a href="https://facebook.com/futadlcf" target="_blank"><img src="${BACKEND_BASE_URL}/uploads/images/facebook.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/futadlcf/" target="_blank"><img src="${BACKEND_BASE_URL}/uploads/images/instagram.png" alt="Instagram"></a>
             </div>
         </div>
     </body>
