@@ -16,6 +16,7 @@ const MemberSchemaField: Record<keyof IMember, unknown> = {
   level: { type: String },
   centre: { type: String, enum: ECentre },
   hall: { type: String },
+  residentialAddress: { type: String },
   imageUrl: { path: { type: String }, fileName: { type: String } },
   userType: { type: String, default: EUserType.MEMBER },
   phoneNumber: { type: String },

@@ -28,6 +28,7 @@ export const createWorkerService = async (
       centre: payload.centre,
       hall: payload.hall,
       dlcfCampus: payload.dlcfCampus,
+      residentialAddress: payload.residentialAddress,
       unit: payload.unit,
     });
 

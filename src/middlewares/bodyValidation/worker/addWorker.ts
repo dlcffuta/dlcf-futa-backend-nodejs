@@ -17,6 +17,7 @@ export const createWorkerSchema: joi.ObjectSchema<WorkerInputDTO> = joi.object({
   centre: joi.string().required(),
   hall: joi.string().required(),
   unit: joi.string().required(),
+  residentialAddress: joi.string().required()
 });
 
 export const addWorker = async (req: Request, res: Response, next: NextFunction) => {

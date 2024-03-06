@@ -17,6 +17,7 @@ export interface IMember {
     fileName: string;
   };
   userType: string;
+  residentialAddress: string;
   last_login: Date;
   verified: boolean;
   token: string;
@@ -70,6 +71,7 @@ export interface MemberInputDTO {
   centre: string;
   hall: string;
   dlcfCampus: string;
+  residentialAddress: string;
 }
 
 export interface UserLoginDTO {

@@ -19,6 +19,7 @@ export interface IWorker {
     fileName: string;
   };
   unit: string;
+  residentialAddress: string;
   userType: EUserType;
   last_login: Date;
   verified: boolean;
@@ -38,6 +39,7 @@ export interface WorkerInputDTO {
   hall: string;
   unit: string;
   dlcfCampus: string;
+  residentialAddress: string;
 }
 
 export interface IWorkerDocument extends IWorker, Document {}

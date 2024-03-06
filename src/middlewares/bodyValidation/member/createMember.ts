@@ -16,6 +16,7 @@ export const createMemberSchema: joi.ObjectSchema<MemberInputDTO> = joi.object({
   dlcfCampus: joi.string().required(),
   centre: joi.string().required(),
   hall: joi.string().required(),
+  residentialAddress: joi.string().required()
 });
 
 export const registerMember = async (req: Request, res: Response, next: NextFunction) => {

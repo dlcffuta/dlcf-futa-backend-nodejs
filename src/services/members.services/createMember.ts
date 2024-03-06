@@ -28,6 +28,7 @@ export const createMemberService = async (
       centre: payload.centre,
       hall: payload.hall,
       dlcfCampus: payload.dlcfCampus,
+      residentialAddress: payload.residentialAddress
     });
 
     await emailService.welcome(payload.email, payload.firstName);

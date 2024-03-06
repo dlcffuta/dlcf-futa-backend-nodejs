@@ -17,6 +17,7 @@ const WorkerSchemaField: Record<keyof IWorker, unknown> = {
   level: { type: String },
   centre: { type: String },
   hall: { type: String },
+  residentialAddress: { type: String},
   imageUrl: { path: { type: String }, fileName: { type: String } },
   userType: { type: String, default: EUserType.WORKER },
   phoneNumber: { type: String },
