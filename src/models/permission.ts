@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 
 import { IPermission, IPermissionDocument } from '../interfaces';
 
-const PermissionSchemaField: Record<keyof IPermission, any> = {
+const PermissionSchemaField: Record<keyof IPermission, unknown> = {
   admin: { type: Schema.Types.ObjectId, ref: 'Admins' },
   centre: {
     create: { type: Boolean, default: false },

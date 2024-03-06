@@ -19,7 +19,7 @@ export interface IWorker {
     fileName: string;
   };
   unit: string;
-  userType: string;
+  userType: EUserType;
   last_login: Date;
   verified: boolean;
   token: string;

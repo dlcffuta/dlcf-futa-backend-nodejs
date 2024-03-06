@@ -4,7 +4,7 @@ import { Service } from 'typedi';
 import {
   loginAdminService,
   changePasswordService,
-  forgotPasswordService
+  forgotPasswordService,
 } from '../services/admin.services';
 
 @Service()
@@ -42,8 +42,7 @@ class AdminControllers {
     } catch (error) {
       next(error);
     }
-  }
-
+  };
 }
 
 export default AdminControllers;

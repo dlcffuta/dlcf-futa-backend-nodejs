@@ -1,4 +1,3 @@
-import { NextFunction } from 'express';
 import nodemailer from 'nodemailer';
 import { Service } from 'typedi';
 

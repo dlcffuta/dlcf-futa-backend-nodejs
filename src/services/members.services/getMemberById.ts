@@ -1,6 +1,6 @@
 import { NextFunction } from 'express';
 
-import { IMember, MemberInputDTO } from '../../interfaces';
+import { IMember } from '../../interfaces';
 import { MemberModel } from '../../models';
 import { CustomError } from '../../utils/response/custom-error/customError';
 

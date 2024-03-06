@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 
 import { IWorker, IWorkerDocument, EUserType, ESchool, EDlcfCampus } from '../interfaces';
 
-const WorkerSchemaField: Record<keyof IWorker, any> = {
+const WorkerSchemaField: Record<keyof IWorker, unknown> = {
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   email: { type: String, required: true, unique: true },

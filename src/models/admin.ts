@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 
 import { IAdmin, IAdminDocument } from '../interfaces';
 
-const AdminSchemaField: Record<keyof IAdmin, any> = {
+const AdminSchemaField: Record<keyof IAdmin, unknown> = {
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   email: { type: String, required: true, unique: true },

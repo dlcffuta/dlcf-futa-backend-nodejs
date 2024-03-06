@@ -1,3 +1,3 @@
 export interface ICustomInterface {
-  [key: string]: any;
+  [key: string]: unknown;
 }

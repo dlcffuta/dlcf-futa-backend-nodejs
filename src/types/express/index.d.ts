@@ -7,7 +7,7 @@ declare global {
     }
 
     export interface Response {
-      customSuccess(statusCode?: number, message?: string, data?: any): Response;
+      customSuccess(statusCode?: number, message?: string, data?: unknown): Response;
     }
   }
 }

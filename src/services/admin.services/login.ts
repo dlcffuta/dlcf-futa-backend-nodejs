@@ -1,11 +1,10 @@
+import { compareSync } from 'bcryptjs';
 import { NextFunction } from 'express';
 
 import { EUserType } from '../../interfaces';
 import { AdminModel, PermissionModel } from '../../models';
+import { createJwtToken, JwtPayload } from '../../utils/createJwtToken';
 import { CustomError } from '../../utils/response/custom-error/customError';
-import { compareSync } from 'bcryptjs';
-import { createJwtToken } from '../../utils/createJwtToken';
-import { JwtPayload } from '../../utils/createJwtToken';
 
 export const loginAdminService = async (
   { email, password }: { email: string; password: string },
@@ -39,7 +38,7 @@ export const loginAdminService = async (
           studentLeader: { create: true, read: true, update: true, delete: true },
         });
         admin.permission = permission.id;
-        let payload: JwtPayload = {
+        const payload: JwtPayload = {
           user_id: admin._id,
           is_verified: admin.verified,
           role: admin.userType,
@@ -54,7 +53,7 @@ export const loginAdminService = async (
         return { token };
       }
 
-      let payload: JwtPayload = {
+      const payload: JwtPayload = {
         user_id: admin._id,
         is_verified: admin.verified,
         role: admin.userType,
@@ -81,7 +80,7 @@ export const loginAdminService = async (
         studentLeader: { create: true, read: true, update: true, delete: true },
       });
       admin.permission = permission.id;
-      let payload: JwtPayload = {
+      const payload: JwtPayload = {
         user_id: admin._id,
         is_verified: admin.verified,
         role: admin.userType,
@@ -96,7 +95,7 @@ export const loginAdminService = async (
       return { token };
     }
 
-    let payload: JwtPayload = {
+    const payload: JwtPayload = {
       user_id: admin._id,
       is_verified: admin.verified,
       role: admin.userType,

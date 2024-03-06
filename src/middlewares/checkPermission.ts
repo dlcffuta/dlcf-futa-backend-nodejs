@@ -1,9 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 
-import { CustomError } from '../utils/response/custom-error/customError';
-import { ICustomInterface } from '../interfaces';
-import { PermissionModel } from '../models';
 import { getPermissionByIdService } from '../services/permission.services';
+import { CustomError } from '../utils/response/custom-error/customError';
 
 export const checkPermission = async (
   req: Request,

@@ -1,4 +1,4 @@
-import { APP_NAME, BACKEND_BASE_URL } from '../config';
+import { APP_NAME } from '../config';
 
 const WelcomeTemplate = ({ name }: { name: string }) => {
   return {

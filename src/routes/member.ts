@@ -4,8 +4,8 @@ import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import { Container } from 'typedi';
 
 import MemberControllers from '../controllers/member.controller';
-import { multerOpts } from '../utils/cloudinary';
 import { checkPermission, checkUserJwt } from '../middlewares';
+import { multerOpts } from '../utils/cloudinary';
 
 const storage = new CloudinaryStorage(multerOpts);
 const upload = multer({ storage: storage, limits: { fileSize: 1024 * 1024 * 2 } });

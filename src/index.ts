@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import 'reflect-metadata';
 import * as connection from './utils/connection';
+
 connection.connectDb();
 
 import fs from 'fs';
@@ -17,7 +18,6 @@ import { NODE_ENV, PORT, CLIENT_URLS } from './config';
 import './utils/response/customSuccess';
 import { errorHandler } from './middlewares/errorHandler';
 import routes from './routes';
-
 import { CustomError } from './utils/response/custom-error/customError';
 
 export const app = express();
@@ -29,7 +29,7 @@ if (NODE_ENV !== 'production') {
 }
 
 const corsOptions = {
-  origin: (origin: any, callback: any) => {
+  origin: (origin?: unknown | any, callback?: null | any) => {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {

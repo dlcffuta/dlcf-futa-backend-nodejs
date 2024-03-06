@@ -2,7 +2,7 @@ import { model, Schema } from 'mongoose';
 
 import { EUnitType, IUnit, IUnitDocument } from '../interfaces';
 
-const UnitSchemaField: Record<keyof IUnit, any> = {
+const UnitSchemaField: Record<keyof IUnit, unknown> = {
   unitHead: { type: String, required: true },
   unitHeadEmail: { type: String, required: true },
   unitHeadPhone: { type: String, required: true },
