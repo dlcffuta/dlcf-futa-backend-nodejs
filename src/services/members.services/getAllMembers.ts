@@ -5,13 +5,13 @@ import { MemberModel } from '../../models';
 import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const getAllMemberService = async (
-    query: ICustomInterface,
-    option: ICustomInterface,
+  query: ICustomInterface,
+  option: ICustomInterface,
   next: NextFunction,
 ): Promise<void | Object> => {
   try {
     const { page, limit } = option;
-    
+
     const member = await MemberModel.find(query)
       .limit(limit * 1)
       .skip((page - 1) * limit);

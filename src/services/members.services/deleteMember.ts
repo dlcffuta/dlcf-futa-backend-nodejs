@@ -1,9 +1,13 @@
 import { NextFunction } from 'express';
-import { deleteUrl } from '../../utils/cloudinary';
+
 import { MemberModel } from '../../models';
+import { deleteUrl } from '../../utils/cloudinary';
 import { CustomError } from '../../utils/response/custom-error/customError';
 
-export const deleteMemberService = async (id: string, next: NextFunction): Promise<void | String> => {
+export const deleteMemberService = async (
+  id: string,
+  next: NextFunction,
+): Promise<void | string> => {
   try {
     const existingMember = await MemberModel.findById({ _id: id });
     if (!existingMember) {

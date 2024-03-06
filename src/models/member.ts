@@ -1,5 +1,6 @@
-import { IMember, IMemberDocument, EUserType, EDlcfCampus, ESchool, ECentre } from '../interfaces';
 import { Schema, model } from 'mongoose';
+
+import { IMember, IMemberDocument, EUserType, EDlcfCampus, ESchool, ECentre } from '../interfaces';
 
 const MemberSchemaField: Record<keyof IMember, any> = {
   firstName: { type: String, required: true },

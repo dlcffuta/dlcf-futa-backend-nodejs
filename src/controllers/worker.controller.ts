@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { Service } from 'typedi';
 
+import { ICustomInterface } from '../interfaces';
 import {
   createWorkerService,
   getWorkerByIdService,
@@ -9,10 +10,8 @@ import {
   deleteWorkerService,
   uploadWorkerProfilePictureService,
 } from '../services/workers.services';
-
-import { CustomError } from '../utils/response/custom-error/customError';
 import { uploadFile } from '../utils/cloudinary';
-import { ICustomInterface } from '../interfaces';
+import { CustomError } from '../utils/response/custom-error/customError';
 
 @Service()
 class WorkerControllers {
@@ -42,7 +41,19 @@ class WorkerControllers {
 
   getAllWorkers = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { limit, page, department, level, school, hall, dlcfCampus, lastName, firstName, email, unit } = req.query;
+      const {
+        limit,
+        page,
+        department,
+        level,
+        school,
+        hall,
+        dlcfCampus,
+        lastName,
+        firstName,
+        email,
+        unit,
+      } = req.query;
 
       const option: ICustomInterface = {
         limit: limit ? parseInt(limit as string) : 20,
@@ -56,7 +67,7 @@ class WorkerControllers {
       if (dlcfCampus) query.dlcfCampus = dlcfCampus;
       if (lastName) query.lastName = { $regex: new RegExp(lastName as string, 'i') };
       if (firstName) query.firstName = { $regex: new RegExp(firstName as string, 'i') };
-        if (email) query.email = { $regex: new RegExp(email as string, 'i') };
+      if (email) query.email = { $regex: new RegExp(email as string, 'i') };
       if (unit) query.unit = { $regex: new RegExp(unit as string, 'i') };
 
       const data = await getAllWorkerService(query, option, next);
@@ -105,6 +116,14 @@ class WorkerControllers {
       next(error);
     }
   };
+
+  // To be implemented:
+  // 1. moveWorkerToAnotherUnit
+  // 2. moveWorkerToAnotherHall
+  // 3. moveWorkerToAnotherCentre
+  // 4. moveWorkerToAnotherDlcfCampus
+  // 5. moveWorkerToMember
+  // 6. moveWorkerToStudentLeader
 }
 
 export default WorkerControllers;

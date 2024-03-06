@@ -1,16 +1,15 @@
 import { NextFunction, Request, Response } from 'express';
 import { Service } from 'typedi';
 
+import { ICustomInterface } from '../interfaces';
 import {
   createMemberService,
-  getMemberByIdService,
-  getAllMemberService,
-  updateMemberService,
   deleteMemberService,
+  getAllMemberService,
+  getMemberByIdService,
+  updateMemberService,
   uploadMemberProfilePictureService,
 } from '../services/members.services';
-
-import { ICustomInterface } from '../interfaces';
 
 @Service()
 class MemberControllers {
@@ -40,21 +39,32 @@ class MemberControllers {
 
   getAllMembers = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { limit, page, department, level, school, hall, dlcfCampus, lastName, firstName, email } = req.query;
+      const {
+        limit,
+        page,
+        department,
+        level,
+        school,
+        hall,
+        dlcfCampus,
+        lastName,
+        firstName,
+        email,
+      } = req.query;
       const option: ICustomInterface = {
         limit: limit ? parseInt(limit as string) : 20,
         page: page ? parseInt(page as string) : 1,
       };
 
-      const query: ICustomInterface = {}
-      if (department) query.department = { $regex: new RegExp(department as string, "i") };
+      const query: ICustomInterface = {};
+      if (department) query.department = { $regex: new RegExp(department as string, 'i') };
       if (level) query.level = level;
       if (school) query.school = school;
       if (hall) query.hall = hall;
-      if (dlcfCampus) query.dlcfCampus = dlcfCampus; 
-      if (lastName) query.lastName = { $regex: new RegExp(lastName as string, "i") };
-      if (firstName) query.firstName = { $regex: new RegExp(firstName as string, "i") };
-      if (email) query.email = { $regex: new RegExp(email as string, "i") };
+      if (dlcfCampus) query.dlcfCampus = dlcfCampus;
+      if (lastName) query.lastName = { $regex: new RegExp(lastName as string, 'i') };
+      if (firstName) query.firstName = { $regex: new RegExp(firstName as string, 'i') };
+      if (email) query.email = { $regex: new RegExp(email as string, 'i') };
 
       const members = await getAllMemberService(query, option, next);
       if (members != null) {
@@ -90,7 +100,11 @@ class MemberControllers {
   uploadProfilePicture = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { path, filename } = req.file;
-      const member = await uploadMemberProfilePictureService(req.params.id, { path, filename }, next);
+      const member = await uploadMemberProfilePictureService(
+        req.params.id,
+        { path, filename },
+        next,
+      );
       if (member != null) {
         res.customSuccess(200, 'Profile picture uploaded successfully', member);
       }
@@ -98,6 +112,10 @@ class MemberControllers {
       next(error);
     }
   };
+
+  // TODO: Add other member controllers
+  // 1. Add member to centre
+  // 2. move member to be a worker
 }
 
 export default MemberControllers;

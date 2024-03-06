@@ -1,4 +1,5 @@
 import { NextFunction } from 'express';
+
 import { IWorker, ICustomInterface } from '../../interfaces';
 import { WorkerModel } from '../../models';
 import { CustomError } from '../../utils/response/custom-error/customError';
@@ -7,9 +8,9 @@ export const getAllWorkerService = async (
   query: ICustomInterface,
   option: ICustomInterface,
   next: NextFunction,
-): Promise<void | Object> => {
+): Promise<void | object> => {
   try {
-    let { page, limit } = option;
+    const { page, limit } = option;
     const worker = await WorkerModel.find(query)
       .limit(limit * 1)
       .skip((page - 1) * limit);

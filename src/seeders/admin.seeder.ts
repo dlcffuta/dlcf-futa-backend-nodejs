@@ -1,10 +1,9 @@
-import { connectDb } from '../utils/connection';
-import { hashSync, hash } from 'bcryptjs';
+import { hashSync } from 'bcryptjs';
 
-import { AdminModel } from '../models';
-
+import { admin, super_admin, SALT_ROUNDS } from '../config';
 import { AdminInputDTO, EUserType } from '../interfaces';
-import { admin, super_admin } from '../config';
+import { AdminModel } from '../models';
+import { connectDb } from '../utils/connection';
 
 const adminSeeder = async () => {
   try {
@@ -16,12 +15,11 @@ const adminSeeder = async () => {
       console.log('Admin already seeded');
       return;
     }
-
-    let adminPassword = hashSync(admin.PASSWORD);
-    let superPassword = hashSync(super_admin.PASSWORD);
+    const adminPassword = hashSync(admin.PASSWORD, SALT_ROUNDS);
+    const superPassword = hashSync(super_admin.PASSWORD, SALT_ROUNDS);
 
     const adminData: AdminInputDTO = {
-      userType: EUserType.SUPER_ADMIN,
+      userType: EUserType.ADMIN,
       firstName: admin.FIRSTNAME,
       lastName: admin.LASTNAME,
       phoneNumber: admin.PHONENUMBER,

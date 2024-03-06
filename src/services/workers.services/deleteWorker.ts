@@ -1,9 +1,13 @@
 import { NextFunction } from 'express';
-import { deleteUrl } from '../../utils/cloudinary';
+
 import { WorkerModel } from '../../models';
+import { deleteUrl } from '../../utils/cloudinary';
 import { CustomError } from '../../utils/response/custom-error/customError';
 
-export const deleteWorkerService = async (id: string, next: NextFunction): Promise<void | String> => {
+export const deleteWorkerService = async (
+  id: string,
+  next: NextFunction,
+): Promise<void | string> => {
   try {
     const existingWorker = await WorkerModel.findById({ _id: id });
     if (!existingWorker) {

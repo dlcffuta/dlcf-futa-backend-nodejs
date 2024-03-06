@@ -1,5 +1,6 @@
-import { ICentre, ICentreDocument } from '../interfaces';
 import { Schema, model } from 'mongoose';
+
+import { ICentre, ICentreDocument } from '../interfaces';
 
 const ICenterchemaField: Record<keyof ICentre, any> = {
   name: { type: String },

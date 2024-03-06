@@ -1,17 +1,17 @@
-import jwt from "jsonwebtoken";
+import jwt from 'jsonwebtoken';
 
-import { JWT_EXPIRATION, JWT_SECRET } from "../config";
-import { EUserType } from "../interfaces";
+import { JWT_EXPIRATION, ADMIN_JWT_SECRET } from '../config';
+import { EUserType } from '../interfaces';
 
 export type JwtPayload = {
   user_id: string;
   is_verified: boolean;
   role: EUserType;
-  email: string;
+  permission: string;
   created_at?: string;
 };
 
 export const createJwtToken = (payload: JwtPayload): string => {
-  const token = jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRATION });
+  const token = jwt.sign(payload, ADMIN_JWT_SECRET, { expiresIn: JWT_EXPIRATION });
   return token;
 };

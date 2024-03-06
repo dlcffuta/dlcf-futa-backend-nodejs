@@ -1,9 +1,9 @@
 import { NextFunction } from 'express';
+import { UpdateQuery } from 'mongoose';
 
 import { IWorker } from '../../interfaces';
 import { WorkerModel } from '../../models';
 import { CustomError } from '../../utils/response/custom-error/customError';
-import { UpdateQuery } from 'mongoose';
 
 export const updateWorkerService = async (
   id: string,

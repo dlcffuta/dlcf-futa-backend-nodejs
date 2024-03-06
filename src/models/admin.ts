@@ -1,5 +1,6 @@
-import { IAdmin, IAdminDocument } from '../interfaces';
 import { Schema, model } from 'mongoose';
+
+import { IAdmin, IAdminDocument } from '../interfaces';
 
 const AdminSchemaField: Record<keyof IAdmin, any> = {
   firstName: { type: String, required: true },
@@ -7,6 +8,7 @@ const AdminSchemaField: Record<keyof IAdmin, any> = {
   email: { type: String, required: true, unique: true },
   password: { type: String },
   imageUrl: { type: String },
+  permission: { type: Schema.Types.ObjectId, ref: 'Permission' },
   userType: { type: String, required: true },
   phoneNumber: { type: String },
   last_login: { type: Date },

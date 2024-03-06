@@ -2,8 +2,8 @@ import { NextFunction } from 'express';
 
 import { IWorker, WorkerInputDTO } from '../../interfaces';
 import { WorkerModel } from '../../models';
-import { CustomError } from '../../utils/response/custom-error/customError';
 import { EmailService } from '../../utils/notification';
+import { CustomError } from '../../utils/response/custom-error/customError';
 
 const emailService = new EmailService();
 

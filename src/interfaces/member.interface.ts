@@ -15,7 +15,7 @@ export interface IMember {
   imageUrl: {
     path: string;
     fileName: string;
-};
+  };
   userType: string;
   last_login: Date;
   verified: boolean;

@@ -1,30 +1,31 @@
-import "dotenv/config";
-import "reflect-metadata";
-import { connectDb } from "./utils/connection";
-connectDb();
+import 'dotenv/config';
+import 'reflect-metadata';
+import * as connection from './utils/connection';
+connection.connectDb();
 
-import express, { Response, Request } from "express";
+import fs from 'fs';
+import path from 'path';
 
-import cors from "cors";
-import helmet from "helmet";
-import fs from "fs";
-import path from "path";
-import morgan from "morgan";
-import routes from "./routes";
-import bodyParser from "body-parser";
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import express, { Response, Request } from 'express';
+import helmet from 'helmet';
+import morgan from 'morgan';
 
-import { NODE_ENV, PORT, CLIENT_URLS } from "./config";
+import { NODE_ENV, PORT, CLIENT_URLS } from './config';
 
-import "./utils/response/customSuccess";
-import { errorHandler } from "./middlewares/errorHandler";
-import { CustomError } from "./utils/response/custom-error/customError";
+import './utils/response/customSuccess';
+import { errorHandler } from './middlewares/errorHandler';
+import routes from './routes';
+
+import { CustomError } from './utils/response/custom-error/customError';
 
 export const app = express();
-const clients_urls = CLIENT_URLS.split(", ");
+const clients_urls = CLIENT_URLS.split(', ');
 let whitelist: string[] = clients_urls;
 
-if (NODE_ENV !== "production") {
-  whitelist = [...whitelist, "http://localhost:9000"];
+if (NODE_ENV !== 'production') {
+  whitelist = [...whitelist, 'http://localhost:9000'];
 }
 
 const corsOptions = {
@@ -32,7 +33,7 @@ const corsOptions = {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
-      callback("Not allowed by CORS", false);
+      callback('Not allowed by CORS', false);
     }
   },
 };
@@ -43,47 +44,48 @@ app.use(cors(corsOptions));
 // Helment: Helps to secure Express app by setting various HTTP headers response
 app.use(helmet());
 
-app.use(bodyParser.json({ limit: "10mb" }));
+app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Allow", "GET, POST, PUT, DELETE, PATCH");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH");
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Allow', 'GET, POST, PUT, DELETE, PATCH');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
   res.header(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Observe, Authorization, Cache-Control",
+    'Access-Control-Allow-Headers',
+    'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Observe, Authorization, Cache-Control',
   );
   next();
 });
 
 try {
-  const accessLogStream = fs.createWriteStream(path.join(__dirname, "../log/access.log"), { flags: "a" });
-  app.use(morgan("combined", { stream: accessLogStream }));
+  const accessLogStream = fs.createWriteStream(path.join(__dirname, '../log/access.log'), {
+    flags: 'a',
+  });
+  app.use(morgan('combined', { stream: accessLogStream }));
 } catch (error) {
   console.log(error);
 }
 // app.use(morgan("dev"));
-app.use(morgan("combined"));
+app.use(morgan('combined'));
 
-app.get("/health", (req: Request, res: Response) => {
+app.get('/health', (req: Request, res: Response) => {
   res.send({
     code: 200,
-    message: "Server is running...",
+    message: 'Server is running...',
   });
 });
 
 // Routes
-app.use("/", routes);
+app.use('/', routes);
 
 // Error Handler on Routes that does not exist
-app.use("*", (req, res, next) => {
-  return next(new CustomError(404, "General", "Route Not Found"));
+app.use('*', (req, res, next) => {
+  return next(new CustomError(404, 'General', 'Route Not Found'));
 });
 
 // Error Handler
 app.use(errorHandler);
-
 
 // Server Error Handler with status code
 app.use((err, req, res, next) => {

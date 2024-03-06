@@ -1,5 +1,6 @@
-import { IWorker, IWorkerDocument, EUserType, ESchool, EDlcfCampus } from '../interfaces';
 import { Schema, model } from 'mongoose';
+
+import { IWorker, IWorkerDocument, EUserType, ESchool, EDlcfCampus } from '../interfaces';
 
 const WorkerSchemaField: Record<keyof IWorker, any> = {
   firstName: { type: String, required: true },
