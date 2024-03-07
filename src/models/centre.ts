@@ -4,6 +4,7 @@ import { ICentre, ICentreDocument } from '../interfaces';
 
 const ICenterchemaField: Record<keyof ICentre, unknown> = {
   name: { type: String },
+  halls: [{ type: Schema.Types.ObjectId, ref: 'Hall' }],
   location: { type: String },
 };
 
