@@ -83,7 +83,7 @@ class MemberControllers {
         return next(new CustomError(400, 'General', 'Please upload a file'));
       }
   // let imageUrl: string | null = await new CloudinaryUtil().uploadBuffer(file, "profile-pictures");
-      const user = await uploadMemberProfilePictureService(req.params.id, file, next);
+      const user = await uploadMemberProfilePictureService(req.params.id, "file", next);
       if (user != null) {
         res.customSuccess(200, 'Profile picture uploaded successfully', user);
       }
