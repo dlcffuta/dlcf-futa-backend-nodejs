@@ -1,6 +1,15 @@
 import { Schema, model } from 'mongoose';
 
-import { IMember, IMemberDocument, EUserType, EDlcfCampus, ESchool, ECentre } from '../interfaces';
+import {
+  IMember,
+  IMemberDocument,
+  EUserType,
+  EDlcfCampus,
+  ESchool,
+  ECentre,
+  EGender,
+  ELevel,
+} from '../interfaces';
 
 const MemberSchemaField: Record<keyof IMember, unknown> = {
   firstName: { type: String, required: true },
@@ -8,15 +17,16 @@ const MemberSchemaField: Record<keyof IMember, unknown> = {
   email: { type: String, required: true, unique: true },
   password: { type: String },
   dlcfCampus: { type: String, enum: EDlcfCampus },
+  gender: { type: String, required: true, enum: EGender },
   department: { type: String },
   school: {
     type: String,
     enum: ESchool,
   },
-  level: { type: String },
+  level: { type: String, required: true, enum: ELevel },
   centre: { type: String, enum: ECentre },
   hall: { type: String },
-  residentialAddress: { type: String },
+  residentialAddress: { type: String, required: true },
   imageUrl: { path: { type: String }, fileName: { type: String } },
   userType: { type: String, default: EUserType.MEMBER },
   phoneNumber: { type: String },

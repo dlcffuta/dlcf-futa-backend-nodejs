@@ -26,6 +26,7 @@ export const createWorkerService = async (
       school: payload.school,
       level: payload.level,
       centre: payload.centre,
+      gender: payload.gender,
       hall: payload.hall,
       dlcfCampus: payload.dlcfCampus,
       residentialAddress: payload.residentialAddress,

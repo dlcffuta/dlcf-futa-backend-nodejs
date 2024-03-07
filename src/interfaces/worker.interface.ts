@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-import { EUserType } from './index';
+import { EUserType, EGender, ELevel } from './index';
 
 export interface IWorker {
   firstName: string;
@@ -8,10 +8,11 @@ export interface IWorker {
   email: string;
   password: string;
   phoneNumber: string;
+  gender: EGender;
   dlcfCampus: string;
   department: string;
   school: string;
-  level: string;
+  level: ELevel;
   centre: string;
   hall: string;
   imageUrl: {
@@ -32,9 +33,10 @@ export interface WorkerInputDTO {
   email: string;
   password?: string;
   phoneNumber: string;
+  gender: EGender;
   department: string;
   school: string;
-  level: string;
+  level: ELevel;
   centre: string;
   hall: string;
   unit: string;

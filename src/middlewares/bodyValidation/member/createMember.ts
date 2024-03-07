@@ -10,13 +10,14 @@ export const createMemberSchema: joi.ObjectSchema<MemberInputDTO> = joi.object({
   firstName: joi.string().required(),
   lastName: joi.string().required(),
   phoneNumber: joi.string().required(),
+  gender: joi.string().required(),
   department: joi.string().required(),
   school: joi.string().required(),
   level: joi.string().required(),
   dlcfCampus: joi.string().required(),
   centre: joi.string().required(),
   hall: joi.string().required(),
-  residentialAddress: joi.string().required()
+  residentialAddress: joi.string().required(),
 });
 
 export const registerMember = async (req: Request, res: Response, next: NextFunction) => {

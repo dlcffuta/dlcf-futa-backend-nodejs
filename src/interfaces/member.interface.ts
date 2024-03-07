@@ -1,26 +1,43 @@
 import { Document } from 'mongoose';
 
+export enum EGender {
+  MALE = 'male',
+  FEMALE = 'female',
+}
 export interface IMember {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
   phoneNumber: string;
+  gender: EGender;
   department: string;
   dlcfCampus: string;
   school: string;
-  level: string;
+  level: ELevel;
   centre: string;
   hall: string;
   imageUrl: {
     path: string;
     fileName: string;
   };
-  userType: string;
+  userType: EUserType;
   residentialAddress: string;
   last_login: Date;
   verified: boolean;
   token: string;
+}
+
+export enum ELevel {
+  LEVEL_100 = '100',
+  LEVEL_200 = '200',
+  LEVEL_300 = '300',
+  LEVEL_400 = '400',
+  LEVEL_500 = '500',
+  GRAD = 'grad',
+  UABS = 'uabs',
+  PRE_DEGREE = 'pre-degree',
+  POST_GRAD = 'post-grad',
 }
 
 export enum EUserType {
@@ -66,8 +83,9 @@ export interface MemberInputDTO {
   password?: string;
   phoneNumber: string;
   department: string;
+  gender: EGender;
   school: string;
-  level: string;
+  level: ELevel;
   centre: string;
   hall: string;
   dlcfCampus: string;

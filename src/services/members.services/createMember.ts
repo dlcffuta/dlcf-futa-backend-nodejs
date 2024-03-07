@@ -27,8 +27,9 @@ export const createMemberService = async (
       level: payload.level,
       centre: payload.centre,
       hall: payload.hall,
+      gender: payload.gender,
       dlcfCampus: payload.dlcfCampus,
-      residentialAddress: payload.residentialAddress
+      residentialAddress: payload.residentialAddress,
     });
 
     await emailService.welcome(payload.email, payload.firstName);

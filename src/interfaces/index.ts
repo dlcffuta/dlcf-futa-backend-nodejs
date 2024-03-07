@@ -5,3 +5,4 @@ export * from './centre.interface';
 export * from './custom.interface';
 export * from './permission.interface';
 export * from './unit.interface';
+export * from './hall.interface';
