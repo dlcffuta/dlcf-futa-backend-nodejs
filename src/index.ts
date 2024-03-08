@@ -1,8 +1,6 @@
 import 'dotenv/config';
 import 'reflect-metadata';
-import * as connection from './utils/connection';
-
-connection.connectDb();
+import './utils/connection';
 
 import fs from 'fs';
 import path from 'path';

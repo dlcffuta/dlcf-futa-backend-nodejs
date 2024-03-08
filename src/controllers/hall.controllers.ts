@@ -9,8 +9,6 @@ import {
   deleteHallService,
 } from '../services/hall.services';
 
-import { CustomError } from '../utils/response/custom-error/customError';
-
 @Service()
 class HallControllers {
   constructor() {}
