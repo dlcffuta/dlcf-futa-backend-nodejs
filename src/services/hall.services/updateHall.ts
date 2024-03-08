@@ -14,7 +14,6 @@ export const updateHallService = async (
     if (!existingHall) {
       return next(new CustomError(400, 'General', "Hall ID doesn't exist!"));
     }
-    // console.log(payload)
     const updatedHall = await HallModel.findByIdAndUpdate({ _id: id }, payload, { new: true });
     return updatedHall;
   } catch (error) {

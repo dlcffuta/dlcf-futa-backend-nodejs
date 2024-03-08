@@ -7,14 +7,22 @@ export const getAllHallService = async (
   query: ICustomInterface,
   option: ICustomInterface,
   next: NextFunction,
-): Promise<void | IHall[]> => {
+): Promise<void | object> => {
   try {
-    console.log(query);
-    const hall = await HallModel.find(query);
-    if (hall.length <= 0) {
-      return next(new CustomError(400, 'General', "Halls doesn't exist!"));
-    }
-    return hall;
+    const { page, limit } = option as { page: number; limit: number };
+    const hall = await HallModel.find(query)
+      .limit(limit * 1)
+      .skip((page - 1) * limit);
+    const total = await HallModel.countDocuments(query);
+    const totalPages = Math.floor(total / limit);
+    const result = {
+      limit,
+      hall,
+      totalPages,
+      currentPage: page,
+    };
+
+    return result;
   } catch (error) {
     return next(new CustomError(500, 'Raw', 'Internal server', error.message));
   }
