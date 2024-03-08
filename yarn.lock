@@ -835,7 +835,7 @@ clone@2.x:
   resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
   integrity sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==
 
-cloudinary@^2.0.2:
+cloudinary@2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/cloudinary/-/cloudinary-2.0.2.tgz#a99a40412aa5cf877533fdba2f917592770632ac"
   integrity sha512-PQOaoM5W0jSrI1EIcnKAHenT3IMCCTbLkSWlXkXzQlkLBxsJIerinZVWebQqqpwz4etdhvlkfaXmsE9yhYc0Qw==
