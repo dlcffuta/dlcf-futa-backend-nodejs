@@ -35,12 +35,12 @@ export class EmailService {
     };
     try {
       transporter.sendMail(info, (err, inf) => {
-        console.log(err);
+        // console.log(err);
         inf;
       });
       return true;
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       throw new Error('Email did not send');
     }
   }

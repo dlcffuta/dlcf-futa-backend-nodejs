@@ -2,7 +2,7 @@ import { NextFunction } from 'express';
 import { HallModel } from '../../models/hall';
 import { CustomError } from '../../utils/response/custom-error/customError';
 
-export const deleteHallService = async (id: string, next: NextFunction): Promise<void | String> => {
+export const deleteHallService = async (id: string, next: NextFunction): Promise<void | string> => {
   try {
     const existingHall = await HallModel.findById({ _id: id });
     if (!existingHall) {

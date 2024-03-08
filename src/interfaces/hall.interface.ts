@@ -32,4 +32,3 @@ export interface IHall {
 }
 
 export interface IHallDocument extends IHall, Document {}
-

@@ -11,13 +11,13 @@ const HallSchema = new Schema(IHallSchemaField, {
   timestamps: true,
   versionKey: false,
   toJSON: {
-    transform:function(doc, ret) {
+    transform: function (doc, ret) {
       ret.id = ret._id;
       delete ret._id;
     },
   },
 });
 
-const HallModel=model<IHallDocument>('Hall',HallSchema);
+const HallModel = model<IHallDocument>('Hall', HallSchema);
 
-export {HallModel}
+export { HallModel };

@@ -1,6 +1,6 @@
 import { NextFunction } from 'express';
 
-import { IHall, HallInputDTO } from '../../interfaces';
+import { IHall } from '../../interfaces';
 import { HallModel } from '../../models/hall';
 import { CustomError } from '../../utils/response/custom-error/customError';
 
