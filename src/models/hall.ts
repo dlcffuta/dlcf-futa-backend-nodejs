@@ -4,7 +4,7 @@ import { Schema, model } from 'mongoose';
 const IHallSchemaField: Record<keyof IHall, any> = {
   name: { type: String, required: true },
   location: { type: String, required: true },
-  centre: { type: String, required: true },
+  centre: { type: Schema.Types.ObjectId, required: true, ref: 'Centre' },
 };
 
 const HallSchema = new Schema(IHallSchemaField, {

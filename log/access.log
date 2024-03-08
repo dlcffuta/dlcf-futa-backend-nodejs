@@ -56,3 +56,5 @@
 ::1 - - [08/Mar/2024:15:13:57 +0000] "GET /hall?centre=gate&limit=2&page=2 HTTP/1.1" 200 270 "-" "PostmanRuntime/7.36.3"
 ::1 - - [08/Mar/2024:15:21:17 +0000] "GET /hall?centre=gate&limit=2&page=2 HTTP/1.1" 200 280 "-" "PostmanRuntime/7.36.3"
 ::1 - - [08/Mar/2024:15:21:30 +0000] "GET /hall?centre=gate&limit=2&page=1 HTTP/1.1" 200 450 "-" "PostmanRuntime/7.36.3"
+::1 - - [08/Mar/2024:15:41:07 +0000] "POST /hall/ HTTP/1.1" 500 165 "-" "PostmanRuntime/7.36.3"
+::1 - - [08/Mar/2024:15:41:26 +0000] "POST /hall/ HTTP/1.1" 500 165 "-" "PostmanRuntime/7.36.3"
