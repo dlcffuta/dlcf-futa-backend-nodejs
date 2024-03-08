@@ -5,3 +5,7 @@ export * from './centre.interface';
 export * from './custom.interface';
 export * from './hall.interface';
 export * from './permission.interface';
+export * from './unit.interface';
+export * from './unitRep.interface';
+export * from './centreRep.interface';
+export * from './hallRep.interface';

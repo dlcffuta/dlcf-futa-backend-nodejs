@@ -9,7 +9,6 @@ import {
   deleteHallService,
 } from '../services/hall.services';
 
-import { CustomError } from '../utils/response/custom-error/customError';
 import { ICustomInterface } from 'interfaces';
 
 @Service()

@@ -1,11 +1,12 @@
 import { Schema, model } from 'mongoose';
 
-import { ICentre, ICentreDocument } from '../interfaces';
+import { EDlcfCampus, ICentre, ICentreDocument } from '../interfaces';
 
 const ICenterchemaField: Record<keyof ICentre, unknown> = {
   name: { type: String },
   halls: [{ type: Schema.Types.ObjectId, ref: 'Hall' }],
   location: { type: String },
+  dlcfCampus: { type: String, enum: EDlcfCampus },
 };
 
 const CentreSchema = new Schema(ICenterchemaField, {

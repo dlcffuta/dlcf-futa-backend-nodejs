@@ -14,3 +14,4 @@ export const connectDb = (): void => {
       process.exit();
     });
 };
+connectDb();

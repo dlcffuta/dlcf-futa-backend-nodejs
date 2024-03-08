@@ -3,13 +3,6 @@ import { model, Schema } from 'mongoose';
 import { EUnitType, IUnit, IUnitDocument } from '../interfaces';
 
 const UnitSchemaField: Record<keyof IUnit, unknown> = {
-  unitHead: { type: String, required: true },
-  unitHeadEmail: { type: String, required: true },
-  unitHeadPhone: { type: String, required: true },
-  unitHeadImage: {
-    path: { type: String },
-    fileName: { type: String },
-  },
   unitType: { type: String, enums: EUnitType, required: true },
   unitDescription: { type: String, required: true },
   unitImageUrl: {

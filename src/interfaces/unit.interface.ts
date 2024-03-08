@@ -11,13 +11,6 @@ export enum EUnitType {
   ACADEMICS = 'academics',
 }
 export interface IUnit {
-  unitHead: string;
-  unitHeadEmail: string;
-  unitHeadPhone: string;
-  unitHeadImage: {
-    path: string;
-    fileName: string;
-  };
   unitType: EUnitType;
   unitDescription: string;
   unitImageUrl: {
