@@ -87,3 +87,4 @@
 ::1 - - [07/Mar/2024:17:00:59 +0000] "GET /hall?centre=Apatapiti HTTP/1.1" 500 187 "-" "PostmanRuntime/7.36.3"
 ::1 - - [07/Mar/2024:17:06:33 +0000] "GET /hall?centre=Apatapiti HTTP/1.1" 500 176 "-" "PostmanRuntime/7.36.3"
 ::1 - - [07/Mar/2024:17:10:45 +0000] "GET /hall?centre=Apatapiti HTTP/1.1" 200 50 "-" "PostmanRuntime/7.36.3"
+::1 - - [07/Mar/2024:17:12:03 +0000] "GET /hall?centre=Apatapiti HTTP/1.1" 400 61 "-" "PostmanRuntime/7.36.3"
