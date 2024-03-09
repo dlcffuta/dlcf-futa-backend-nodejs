@@ -10,3 +10,7 @@ export * from './unitRep.interface';
 export * from './centreRep.interface';
 export * from './hallRep.interface';
 export * from './school.interface';
+export * from './amPrayerReport.interface';
+export * from './evangelismReport.interface';
+export * from './koinoniaReport.interface';
+export * from './pmPrayerReport.interface';
