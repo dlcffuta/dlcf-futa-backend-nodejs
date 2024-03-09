@@ -4,7 +4,7 @@ import { IUnitRepresentative, IUnitRepresentativeDocument } from '../interfaces'
 
 const UnitRepresentativeSchemaField: Record<keyof IUnitRepresentative, unknown> = {
   workerId: { type: Schema.Types.ObjectId, ref: 'Worker', required: true },
-  unitId: { typ: Schema.Types.ObjectId, ref: 'Unit', required: true },
+  unitId: { type: Schema.Types.ObjectId, ref: 'Unit', required: true },
   unitHeadName: { type: String, required: true },
   unitHeadEmail: { type: String, required: true },
   unitHeadPhone: { type: String, required: true },

@@ -9,3 +9,4 @@ export * from './unit.interface';
 export * from './unitRep.interface';
 export * from './centreRep.interface';
 export * from './hallRep.interface';
+export * from './school.interface';

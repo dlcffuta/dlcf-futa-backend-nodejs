@@ -1,7 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
 import joi from 'joi';
 
-import { MemberInputDTO } from '../../../interfaces';
+import {
+  ECentre,
+  EDlcfCampus,
+  EGender,
+  EHall,
+  ELevel,
+  ESchool,
+  MemberInputDTO,
+} from '../../../interfaces';
 import { CustomError } from '../../../utils/response/custom-error/customError';
 
 export const createMemberSchema: joi.ObjectSchema<MemberInputDTO> = joi.object({
@@ -10,13 +18,31 @@ export const createMemberSchema: joi.ObjectSchema<MemberInputDTO> = joi.object({
   firstName: joi.string().required(),
   lastName: joi.string().required(),
   phoneNumber: joi.string().required(),
-  gender: joi.string().required(),
+  gender: joi
+    .string()
+    .required()
+    .valid(...Object.values(EGender)),
   department: joi.string().required(),
-  school: joi.string().required(),
-  level: joi.string().required(),
-  dlcfCampus: joi.string().required(),
-  centre: joi.string().required(),
-  hall: joi.string().required(),
+  school: joi
+    .string()
+    .required()
+    .valid(...Object.values(ESchool)),
+  level: joi
+    .string()
+    .required()
+    .valid(...Object.values(ELevel)),
+  dlcfCampus: joi
+    .string()
+    .required()
+    .valid(...Object.values(EDlcfCampus)),
+  centre: joi
+    .string()
+    .required()
+    .valid(...Object.values(ECentre)),
+  hall: joi
+    .string()
+    .required()
+    .valid(...Object.values(EHall)),
   residentialAddress: joi.string().required(),
 });
 

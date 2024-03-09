@@ -47,7 +47,6 @@ class CentreControllers {
       const query: ICustomInterface = {};
       if (name) query.name = { $regex: new RegExp(name as string, 'i') };
       if (location) query.location = { $regex: new RegExp(location as string, 'i') };
-      if (location) query.location = { $regex: new RegExp(location as string, 'i') };
       if (hall) query.hall = { $regex: new RegExp(hall as string, 'i') };
       if (dlcfCampus) query.dlcfCampus = { $regex: new RegExp(dlcfCampus as string, 'i') };
 

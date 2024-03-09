@@ -60,22 +60,6 @@ export enum EDlcfCampus {
   OTHERS = 'others',
 }
 
-export enum ESchool {
-  SEET = 'seet',
-  SLIT = 'slit',
-  SAAT = 'saat',
-  SET = 'set',
-  SOS = 'sos',
-  SBMS = 'sbms',
-  SCS = 'scs',
-  SEMS = 'sems',
-  SLS = 'sls',
-  SOC = 'soc',
-  SBCS = 'sbcs',
-  CHS = 'chs',
-  SPS = 'sps',
-}
-
 export interface MemberInputDTO {
   firstName: string;
   lastName: string;

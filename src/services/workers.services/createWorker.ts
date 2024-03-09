@@ -1,7 +1,7 @@
 import { NextFunction } from 'express';
 
 import { IWorker, WorkerInputDTO } from '../../interfaces';
-import { WorkerModel } from '../../models';
+import { WorkerModel, CentreModel, HallModel, UnitModel } from '../../models';
 import { EmailService } from '../../utils/notification';
 import { CustomError } from '../../utils/response/custom-error/customError';
 
@@ -17,6 +17,21 @@ export const createWorkerService = async (
       return next(new CustomError(400, 'General', 'Worker already exists'));
     }
 
+    const centre = await CentreModel.findOne({ name: payload.centre });
+    if (!centre) {
+      return next(new CustomError(404, 'General', 'Centre does not exist'));
+    }
+
+    const hall = await HallModel.findOne({ name: payload.hall });
+    if (!hall) {
+      return next(new CustomError(404, 'General', 'Hall does not exist'));
+    }
+
+    const unit = await UnitModel.findOne({ name: payload.unit });
+    if (!unit) {
+      return next(new CustomError(404, 'General', 'Unit does not exist'));
+    }
+
     const newWorker = await WorkerModel.create({
       firstName: payload.firstName,
       lastName: payload.lastName,
@@ -25,12 +40,12 @@ export const createWorkerService = async (
       department: payload.department,
       school: payload.school,
       level: payload.level,
-      centre: payload.centre,
+      centre: centre._id,
       gender: payload.gender,
-      hall: payload.hall,
+      hall: hall._id,
       dlcfCampus: payload.dlcfCampus,
       residentialAddress: payload.residentialAddress,
-      unit: payload.unit,
+      unit: unit._id,
     });
 
     await emailService.welcome(payload.email, payload.firstName);

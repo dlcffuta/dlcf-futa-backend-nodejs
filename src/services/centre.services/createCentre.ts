@@ -16,8 +16,8 @@ export const createCentreService = async (payload: ICentre, next: NextFunction) 
 
     const newCentre = await CentreModel.create({
       name: payload.name,
-        location: payload.location,
-        dlcfCampus: payload.dlcfCampus,
+      location: payload.location,
+      dlcfCampus: payload.dlcfCampus,
     });
     return newCentre;
   } catch (error) {

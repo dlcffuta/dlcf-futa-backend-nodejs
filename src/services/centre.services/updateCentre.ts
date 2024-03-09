@@ -13,7 +13,7 @@ export const updateCentreService = async (
 ): Promise<ICentre | void> => {
   try {
     const centre = await CentreModel.findById(centreId);
-    if (centre) {
+    if (!centre) {
       return next(new CustomError(409, 'General', `Centre with id ${centreId} does not exist`));
     }
     const updatedCentre = await CentreModel.findByIdAndUpdate({ _id: centreId }, payload, {

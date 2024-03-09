@@ -11,7 +11,7 @@ export const getCentreByIdService = async (
 ): Promise<ICentre | void> => {
   try {
     const centre = await CentreModel.findById(id);
-    if (centre) {
+    if (!centre) {
       return next(new CustomError(409, 'General', `Centre with id ${id} does not exist`));
     }
     return centre;

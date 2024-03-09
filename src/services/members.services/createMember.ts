@@ -1,7 +1,7 @@
 import { NextFunction } from 'express';
 
 import { IMember, MemberInputDTO } from '../../interfaces';
-import { MemberModel } from '../../models';
+import { CentreModel, HallModel, MemberModel } from '../../models';
 import { EmailService } from '../../utils/notification';
 import { CustomError } from '../../utils/response/custom-error/customError';
 
@@ -16,6 +16,15 @@ export const createMemberService = async (
     if (existingMember) {
       return next(new CustomError(400, 'General', 'Member already exists'));
     }
+    const centre = await CentreModel.findOne({ name: payload.centre });
+    if (!centre) {
+      return next(new CustomError(404, 'General', 'Centre does not exist'));
+    }
+
+    const hall = await HallModel.findOne({ name: payload.hall });
+    if (!hall) {
+      return next(new CustomError(404, 'General', 'Hall does not exist'));
+    }
 
     const newMember = await MemberModel.create({
       firstName: payload.firstName,
@@ -25,8 +34,8 @@ export const createMemberService = async (
       department: payload.department,
       school: payload.school,
       level: payload.level,
-      centre: payload.centre,
-      hall: payload.hall,
+      centre: centre._id,
+      hall: hall._id,
       gender: payload.gender,
       dlcfCampus: payload.dlcfCampus,
       residentialAddress: payload.residentialAddress,

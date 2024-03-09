@@ -10,7 +10,7 @@ export const deleteCentreService = async (
 ): Promise<string | void> => {
   try {
     const centre = await CentreModel.findById(centreId);
-    if (centre) {
+    if (!centre) {
       return next(new CustomError(409, 'General', `Centre with id ${centreId} does not exist`));
     }
     await CentreModel.findByIdAndDelete({ _id: centreId });
