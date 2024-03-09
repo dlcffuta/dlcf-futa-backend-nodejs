@@ -14,7 +14,9 @@ export const getAllCentreService = async (
     const { limit, page } = options as { limit: number; page: number };
     const centres = await CentreModel.find(query)
       .limit(limit * 1)
-      .skip((page - 1) * limit);
+      .skip((page - 1) * limit)
+      .populate('halls')
+      .exec();
     const total = await CentreModel.countDocuments(query);
 
     const result = {

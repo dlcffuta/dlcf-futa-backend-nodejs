@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-import { EDlcfCampus, ICentre, ICentreDocument } from '../interfaces';
+import { EDlcfCampus, ICentre, ICentreDocument, IHallDocument } from '../interfaces';
 
 const ICenterchemaField: Record<keyof ICentre, unknown> = {
   name: { type: String },
@@ -17,6 +17,12 @@ const CentreSchema = new Schema(ICenterchemaField, {
       ret.id = ret._id;
       delete ret._id;
       delete ret.password;
+
+      if (doc.halls && Array.isArray(doc.halls)) {
+        ret.halls = doc.halls.map((hall: IHallDocument) => {
+          return { name: hall.name, location: hall.location };
+        });
+      }
     },
   },
 });

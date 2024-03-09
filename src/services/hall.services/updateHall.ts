@@ -1,7 +1,7 @@
 import { NextFunction } from 'express';
 
 import { IHall } from '../../interfaces';
-import { HallModel } from '../../models/hall';
+import { HallModel, CentreModel } from '../../models';
 import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const updateHallService = async (
@@ -14,6 +14,7 @@ export const updateHallService = async (
     if (!existingHall) {
       return next(new CustomError(400, 'General', "Hall ID doesn't exist!"));
     }
+
     const updatedHall = await HallModel.findByIdAndUpdate({ _id: id }, payload, { new: true });
     return updatedHall;
   } catch (error) {

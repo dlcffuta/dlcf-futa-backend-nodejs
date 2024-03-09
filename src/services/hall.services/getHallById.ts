@@ -6,7 +6,7 @@ import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const getHallByIdService = async (id: string, next: NextFunction): Promise<void | IHall> => {
   try {
-    const hall = await HallModel.findById({ _id: id });
+    const hall = await HallModel.findById({ _id: id }).populate('centre').exec();
     if (!hall) {
       return next(new CustomError(400, 'General', "Hall ID doesn't exist!"));
     }

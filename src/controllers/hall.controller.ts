@@ -36,7 +36,7 @@ class HallControllers {
   };
   getAllHalls = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { hall, location, limit, page, name } = req.query;
+      const { hall, location, limit, page, name, centre } = req.query;
       const option: ICustomInterface = {
         limit: limit ? parseInt(limit as string) : 20,
         page: page ? parseInt(page as string) : 1,
@@ -45,6 +45,7 @@ class HallControllers {
       if (hall) query.hall = { $regex: new RegExp(hall as string, 'i') };
       if (location) query.location = { $regex: new RegExp(location as string, 'i') };
       if (name) query.name = { $regex: new RegExp(name as string, 'i') };
+      if (centre) query.centre = { $regex: new RegExp(centre as string, 'i') };
       const halls = await getAllHallService(query, option, next);
       if (halls != null) {
         res.customSuccess(200, 'halls found', halls);

@@ -6,10 +6,10 @@ import { checkPermission, checkUserJwt, addHall } from '../middlewares';
 const router = Router();
 const hallController = Container.get(HallControllers);
 
-router.post('/', [addHall], hallController.createHall);
+router.post('/', [checkUserJwt, checkPermission, addHall], hallController.createHall);
 router.get('/', hallController.getAllHalls);
-router.get('/:id', hallController.getHallById);
-router.put('/:id', hallController.updateHall);
-router.delete('/:id', hallController.deleteHall);
+router.get('/:id', [checkUserJwt, checkPermission], hallController.getHallById);
+router.put('/:id', [checkUserJwt, checkPermission], hallController.updateHall);
+router.delete('/:id',[checkUserJwt, checkPermission], hallController.deleteHall);
 
 export default router;

@@ -23,6 +23,7 @@ export const createHallService = async (
       location: payload.location,
     });
     centre.halls.push(newHall._id);
+    await centre.save();
     return newHall;
   } catch (error) {
     return next(new CustomError(500, 'Raw', 'Internal server', error.message));

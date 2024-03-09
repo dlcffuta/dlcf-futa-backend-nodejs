@@ -10,7 +10,7 @@ export const getCentreByIdService = async (
   next: NextFunction,
 ): Promise<ICentre | void> => {
   try {
-    const centre = await CentreModel.findById(id);
+    const centre = await CentreModel.findById(id).populate('halls').exec();
     if (!centre) {
       return next(new CustomError(409, 'General', `Centre with id ${id} does not exist`));
     }

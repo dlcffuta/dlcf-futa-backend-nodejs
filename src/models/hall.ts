@@ -1,4 +1,4 @@
-import { IHall, IHallDocument } from 'interfaces';
+import { IHall, IHallDocument, ICentreDocument } from 'interfaces';
 import { Schema, model } from 'mongoose';
 
 const IHallSchemaField: Record<keyof IHall, any> = {
@@ -14,6 +14,13 @@ const HallSchema = new Schema(IHallSchemaField, {
     transform: function (doc, ret) {
       ret.id = ret._id;
       delete ret._id;
+
+      if (doc.centre) {
+        ret.centre = {
+          name: (doc.centre as ICentreDocument).name,
+          location: (doc.centre as ICentreDocument).location,
+        };
+      }
     },
   },
 });
