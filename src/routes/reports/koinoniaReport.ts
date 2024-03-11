@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import KoinoniaReportController from 'controllers/reports.controller/koinoniaReport';
+import KoinoniaReportController from '../../controllers/reports.controller/koinoniaReport';
 import Container from 'typedi';
 import { checkPermission, checkUserJwt, addHall } from '../../middlewares';
 

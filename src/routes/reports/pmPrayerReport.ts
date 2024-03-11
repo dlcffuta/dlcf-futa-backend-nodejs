@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import PmPrayerReportController from 'controllers/reports.controller/pmPrayerReport';
+import PmPrayerReportController from '../../controllers/reports.controller/pmPrayerReport';
 import Container from 'typedi';
 import { checkPermission, checkUserJwt, addHall } from '../../middlewares';
 

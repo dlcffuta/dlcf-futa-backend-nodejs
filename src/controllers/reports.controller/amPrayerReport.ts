@@ -7,7 +7,7 @@ import {
   getAllAmPrayerReportService,
   getAmPrayerReportByIdService,
   updateAmPrayerReportService,
-} from 'services/reports.services';
+} from '../../services/reports.services';
 
 @Service()
 class AmPrayerReportController {

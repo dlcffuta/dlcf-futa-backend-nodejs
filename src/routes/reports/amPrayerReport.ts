@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import AmPrayerReportController from 'controllers/reports.controller/amPrayerReport';
+import AmPrayerReportController from '../../controllers/reports.controller/amPrayerReport';
 import Container from 'typedi';
 import { checkPermission, checkUserJwt, addHall } from '../../middlewares';
 

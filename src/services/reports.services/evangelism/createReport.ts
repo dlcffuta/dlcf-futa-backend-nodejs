@@ -1,21 +1,22 @@
 import { NextFunction } from 'connect';
-import { IEvangelismReport } from 'interfaces';
+import { IEvengelismReport } from 'interfaces';
 import { EvangelismReportModel, HallModel } from '../../../models';
 
-import { CustomError } from 'utils/response/custom-error/customError';
+import { CustomError } from '../../../utils/response/custom-error/customError';
 
 export const createEvangelismReportService = async (
-  payload: IEvangelismReport,
+  payload: IEvengelismReport,
   next: NextFunction,
-): Promise<void | IEvangelismReport> => {
+): Promise<void | IEvengelismReport> => {
   try {
-    const existingHall = await HallModel.exists({ _id: payload.hallId });
+    const existingHall = await HallModel.exists({ name: payload.hallId });
     if (!existingHall) {
       return next(new CustomError(400, 'General', 'Hall does not exist'));
     }
+    console.log(existingHall);
     const newReport = await EvangelismReportModel.create({
-      hallId: payload.hallId,
-      numberOfMembersWhoWent: payload,
+      hallId: existingHall._id,
+      numberOfMembersWhoWent: payload.numberOfMembersWhoWent,
       date: payload.date,
       nameOfPeopleMinisteredTo: {
         firstName: payload.nameOfPeopleMinisteredTo.firstName,

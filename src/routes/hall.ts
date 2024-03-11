@@ -10,6 +10,6 @@ router.post('/', [checkUserJwt, checkPermission, addHall], hallController.create
 router.get('/', hallController.getAllHalls);
 router.get('/:id', [checkUserJwt, checkPermission], hallController.getHallById);
 router.put('/:id', [checkUserJwt, checkPermission], hallController.updateHall);
-router.delete('/:id',[checkUserJwt, checkPermission], hallController.deleteHall);
+router.delete('/:id', [checkUserJwt, checkPermission], hallController.deleteHall);
 
 export default router;

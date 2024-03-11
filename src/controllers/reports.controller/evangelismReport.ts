@@ -7,7 +7,7 @@ import {
   getAllEvangelismReportService,
   getEvangelismReportByIdService,
   updateEvangelismReportService,
-} from 'services/reports.services';
+} from '../../services/reports.services';
 
 @Service()
 class EvangelismReportController {

@@ -1,7 +1,7 @@
 import { NextFunction } from 'express';
 import { IKoinoniaReport, ICustomInterface } from 'interfaces';
-import { KoinoniaReportModel, HallModel } from 'models';
-import { CustomError } from 'utils/response/custom-error/customError';
+import { KoinoniaReportModel, HallModel } from '../../../models';
+import { CustomError } from '../../../utils/response/custom-error/customError';
 
 export const getAllKoinoniaReportService = async (
   query: ICustomInterface,
@@ -17,11 +17,12 @@ export const getAllKoinoniaReportService = async (
         return next(new CustomError(400, 'General', 'Hall does not exist'));
       }
       query = { ...query, hallId: hallId._id };
+      delete query.hall
     }
     const KoinoniaReport = await KoinoniaReportModel.find(query)
       .limit(limit * 1)
       .skip((page - 1) * limit)
-      .populate('Hall')
+      .populate('hallId')
       .exec();
     const total = await KoinoniaReportModel.countDocuments(query);
     const totalPages = Math.floor(total / limit);
@@ -31,6 +32,7 @@ export const getAllKoinoniaReportService = async (
       totalPages,
       currentPage: page,
     };
+    return result;
   } catch (error) {
     return next(new CustomError(500, 'Raw', 'Internal server', error.message));
   }

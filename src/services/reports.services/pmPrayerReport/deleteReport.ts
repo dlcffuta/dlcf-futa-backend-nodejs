@@ -2,7 +2,7 @@ import { NextFunction } from 'connect';
 import { IPmPrayerReport } from 'interfaces';
 import { PmPrayerReportModel } from '../../../models';
 
-import { CustomError } from 'utils/response/custom-error/customError';
+import { CustomError } from '../../../utils/response/custom-error/customError';
 
 export const deletePmPrayerReportService = async (
   id: string,

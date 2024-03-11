@@ -10,7 +10,7 @@ export const getAllHallService = async (
 ): Promise<void | object> => {
   try {
     const { page, limit } = option as { page: number; limit: number };
-    
+
     const { centre } = query as { centre: string };
     if (centre) {
       const centreId = await CentreModel.findOne({ name: centre });
@@ -18,7 +18,7 @@ export const getAllHallService = async (
         return next(new CustomError(404, 'General', 'Centre does not exist'));
       }
       query = { ...query, centre: centreId._id };
-    };
+    }
 
     const hall = await HallModel.find(query)
       .limit(limit * 1)

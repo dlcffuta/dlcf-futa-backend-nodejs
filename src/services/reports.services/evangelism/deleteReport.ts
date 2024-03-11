@@ -1,8 +1,8 @@
 import { NextFunction } from 'connect';
-import { IEvangelismReport } from 'interfaces';
+import { IEvengelismReport } from 'interfaces';
 import { EvangelismReportModel } from '../../../models';
 
-import { CustomError } from 'utils/response/custom-error/customError';
+import { CustomError } from '../../../utils/response/custom-error/customError';
 
 export const deleteEvangelismReportService = async (
   id: string,

@@ -7,7 +7,7 @@ import {
   getAllKoinoniaReportService,
   getKoinoniaReportByIdService,
   updateKoinoniaReportService,
-} from 'services/reports.services';
+} from '../../services/reports.services';
 
 @Service()
 class KoinoniaReportController {

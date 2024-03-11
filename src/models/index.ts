@@ -9,3 +9,7 @@ export * from './hallRep';
 export * from './unit';
 export * from './unitRep';
 export * from './school';
+export * from './evangelismReport';
+export * from './amPrayerReport';
+export * from './pmPrayerReport';
+export * from './koinoniaReport';

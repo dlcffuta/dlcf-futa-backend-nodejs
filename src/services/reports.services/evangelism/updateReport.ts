@@ -1,14 +1,14 @@
 import { NextFunction } from 'express';
 
-import { IEvangelismReport } from 'interfaces';
-import { EvangelismReportModel } from 'models';
-import { CustomError } from 'utils/response/custom-error/customError';
+import { IEvengelismReport } from 'interfaces';
+import { EvangelismReportModel } from '../../../models';
+import { CustomError } from '../../../utils/response/custom-error/customError';
 
 export const updateEvangelismReportService = async (
   id: string,
-  payload: IEvangelismReport,
+  payload: IEvengelismReport,
   next: NextFunction,
-): Promise<void | IEvangelismReport> => {
+): Promise<void | IEvengelismReport> => {
   try {
     const existingEvangelismReport = await EvangelismReportModel.findById({ _id: id });
     if (!existingEvangelismReport) {
