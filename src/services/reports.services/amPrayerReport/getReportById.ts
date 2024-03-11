@@ -9,7 +9,9 @@ export const getAmPrayerReportByIdService = async (
   next: NextFunction,
 ): Promise<void | IAmPrayerReport> => {
   try {
-    const AmPrayerReport = await AmPrayerReportModel.findById({ _id: id }).populate('hallId').exec();
+    const AmPrayerReport = await AmPrayerReportModel.findById({ _id: id })
+      .populate('hallId')
+      .exec();
     if (!AmPrayerReport) {
       return next(new CustomError(400, 'General', "Morning prayer report ID doesn't exist!"));
     }

@@ -9,7 +9,9 @@ export const getKoinoniaReportByIdService = async (
   next: NextFunction,
 ): Promise<void | IKoinoniaReport> => {
   try {
-    const KoinoniaReport = await KoinoniaReportModel.findById({ _id: id }).populate('hallId').exec();
+    const KoinoniaReport = await KoinoniaReportModel.findById({ _id: id })
+      .populate('hallId')
+      .exec();
     if (!KoinoniaReport) {
       return next(new CustomError(400, 'General', "Koinonia report ID doesn't exist!"));
     }

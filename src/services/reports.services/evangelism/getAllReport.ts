@@ -17,8 +17,7 @@ export const getAllEvangelismReportService = async (
         return next(new CustomError(400, 'General', 'Hall does not exist'));
       }
       query = { ...query, hallId: hallId._id };
-            delete query.hall;
-
+      delete query.hall;
     }
     const EvangelismReport = await EvangelismReportModel.find(query)
       .limit(limit * 1)

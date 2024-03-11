@@ -9,7 +9,9 @@ export const getPmPrayerReportByIdService = async (
   next: NextFunction,
 ): Promise<void | IPmPrayerReport> => {
   try {
-    const PmPrayerReport = await PmPrayerReportModel.findById({ _id: id }).populate('hallId').exec();
+    const PmPrayerReport = await PmPrayerReportModel.findById({ _id: id })
+      .populate('hallId')
+      .exec();
     if (!PmPrayerReport) {
       return next(new CustomError(400, 'General', "Evening prayer report ID doesn't exist!"));
     }
