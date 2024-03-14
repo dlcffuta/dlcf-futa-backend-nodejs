@@ -17,4 +17,4 @@ export interface IEvengelismReport {
   };
 }
 
-export interface IEvangelismReportModel extends IEvengelismReport, Document {}
+export interface IEvengelismReportModel extends IEvengelismReport, Document {}

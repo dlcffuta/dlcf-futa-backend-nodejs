@@ -11,4 +11,4 @@ export interface IAmPrayerReport {
   totalNumberOfAttendee: number;
 }
 
-export interface IAmPrayerReportModel extends IAmPrayerReport, Document { }
+export interface IAmPrayerReportModel extends IAmPrayerReport, Document {}
