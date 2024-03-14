@@ -1,8 +1,8 @@
 import { NextFunction } from 'express';
 
 import { IPmPrayerReport } from 'interfaces';
-import { PmPrayerReportModel } from '../../../models';
-import { CustomError } from '../../../utils/response/custom-error/customError';
+import { PmPrayerReportModel } from '../../models';
+import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const getPmPrayerReportByIdService = async (
   id: string,

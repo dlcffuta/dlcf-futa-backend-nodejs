@@ -1,8 +1,8 @@
 import { NextFunction } from 'express';
 
 import { IKoinoniaReport } from 'interfaces';
-import { KoinoniaReportModel } from '../../../models';
-import { CustomError } from '../../../utils/response/custom-error/customError';
+import { KoinoniaReportModel } from '../../models';
+import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const updateKoinoniaReportService = async (
   id: string,

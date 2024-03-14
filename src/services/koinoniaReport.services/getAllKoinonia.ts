@@ -1,7 +1,7 @@
 import { NextFunction } from 'express';
 import { IKoinoniaReport, ICustomInterface } from 'interfaces';
-import { KoinoniaReportModel, HallModel } from '../../../models';
-import { CustomError } from '../../../utils/response/custom-error/customError';
+import { KoinoniaReportModel, HallModel } from '../../models';
+import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const getAllKoinoniaReportService = async (
   query: ICustomInterface,

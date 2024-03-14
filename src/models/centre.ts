@@ -20,7 +20,7 @@ const CentreSchema = new Schema(ICenterchemaField, {
 
       if (doc.halls && Array.isArray(doc.halls)) {
         ret.halls = doc.halls.map((hall: IHallDocument) => {
-          return { name: hall.name, location: hall.location };
+          return { id: hall._id, name: hall.name, location: hall.location };
         });
       }
     },

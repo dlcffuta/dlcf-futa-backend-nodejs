@@ -1,8 +1,8 @@
 import { NextFunction } from 'connect';
 import { IAmPrayerReport } from 'interfaces';
-import { AmPrayerReportModel } from '../../../models';
+import { AmPrayerReportModel } from '../../models';
 
-import { CustomError } from '../../../utils/response/custom-error/customError';
+import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const deleteAmPrayerReportService = async (
   id: string,

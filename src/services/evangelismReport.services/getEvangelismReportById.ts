@@ -1,8 +1,8 @@
 import { NextFunction } from 'express';
 
 import { IEvengelismReport } from 'interfaces';
-import { EvangelismReportModel } from '../../../models';
-import { CustomError } from '../../../utils/response/custom-error/customError';
+import { EvangelismReportModel } from '../../models';
+import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const getEvangelismReportByIdService = async (
   id: string,

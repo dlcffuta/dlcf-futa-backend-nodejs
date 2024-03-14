@@ -18,19 +18,19 @@ export enum ESchoolCode {
 }
 
 export enum ESchool {
-  SEET = 'School of Engineering and Engineering Technology',
-  SLIT = 'School of Logistic and Innovation Technology',
-  SAAT = 'School of Agriculture and Agricultural Technology',
-  SET = 'School of Environmental Technology',
-  SOPS = 'School Of Postgraduate Studies',
-  SBMS = 'School Of Basic Medical Sciences',
-  SCS = 'School Of Clinical Sciences',
-  SEMS = 'School of Earth and Mineral Sciences',
-  SLS = 'School of Life Sciences',
-  SOC = 'School of Computing',
-  SBCS = 'School Of Basic Clinical Sciences',
-  CHS = 'College Of Health Sciences',
-  SPS = 'School of Physical Sciences',
+  SEET = 'school of engineering and engineering technology',
+  SLIT = 'school of logistic and innovation technology',
+  SAAT = 'school of agriculture and agricultural technology',
+  SET = 'school of environmental technology',
+  SOPS = 'school of postgraduate studies',
+  SBMS = 'school of basic medical sciences',
+  SCS = 'school of clinical sciences',
+  SEMS = 'school of earth and mineral sciences',
+  SLS = 'school of life sciences',
+  SOC = 'school of computing',
+  SBCS = 'school of basic clinical sciences',
+  CHS = 'college of health sciences',
+  SPS = 'school of physical sciences',
 }
 
 export interface ISchool {

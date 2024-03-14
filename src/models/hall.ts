@@ -17,6 +17,7 @@ const HallSchema = new Schema(IHallSchemaField, {
 
       if (doc.centre) {
         ret.centre = {
+          id: (doc.centre as ICentreDocument)._id,
           name: (doc.centre as ICentreDocument).name,
           location: (doc.centre as ICentreDocument).location,
         };

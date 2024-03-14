@@ -7,7 +7,7 @@ import {
   getAllAmPrayerReportService,
   getAmPrayerReportByIdService,
   updateAmPrayerReportService,
-} from '../../services/reports.services';
+} from '../../services/amPrayerReport.services';
 
 @Service()
 class AmPrayerReportController {
@@ -27,7 +27,7 @@ class AmPrayerReportController {
     try {
       const report = await getAmPrayerReportByIdService(req.params.id, next);
       if (report != null) {
-        res.customSuccess(200, 'Morning prayer report found', report);
+        res.customSuccess(200, 'Morning prayer report fetched', report);
       }
     } catch (error) {
       next(error);
@@ -48,7 +48,7 @@ class AmPrayerReportController {
 
       const report = await getAllAmPrayerReportService(query, option, next);
       if (report != null) {
-        res.customSuccess(200, 'Morning prayer report found', report);
+        res.customSuccess(200, 'Morning prayer report fetched', report);
       }
     } catch (error) {
       next(error);

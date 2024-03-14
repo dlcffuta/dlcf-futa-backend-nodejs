@@ -1,8 +1,8 @@
 import { NextFunction } from 'connect';
 import { IKoinoniaReport } from 'interfaces';
-import { KoinoniaReportModel } from '../../../models';
+import { KoinoniaReportModel } from '../../models';
 
-import { CustomError } from '../../../utils/response/custom-error/customError';
+import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const deleteKoinoniaReportService = async (
   id: string,

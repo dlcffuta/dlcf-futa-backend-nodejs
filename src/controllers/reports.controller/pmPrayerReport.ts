@@ -7,7 +7,7 @@ import {
   getAllPmPrayerReportService,
   getPmPrayerReportByIdService,
   updatePmPrayerReportService,
-} from '../../services/reports.services';
+} from '../../services/pmPrayerReport.services';
 
 @Service()
 class PmPrayerReportController {

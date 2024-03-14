@@ -1,9 +1,9 @@
 import { NextFunction } from 'express';
-import { IAmPrayerReport, ICustomInterface } from 'interfaces';
-import { AmPrayerReportModel, HallModel } from '../../../models';
-import { CustomError } from '../../../utils/response/custom-error/customError';
+import { IEvengelismReport, ICustomInterface } from 'interfaces';
+import { EvangelismReportModel, HallModel } from '../../models';
+import { CustomError } from '../../utils/response/custom-error/customError';
 
-export const getAllAmPrayerReportService = async (
+export const getAllEvangelismReportService = async (
   query: ICustomInterface,
   option: ICustomInterface,
   next: NextFunction,
@@ -19,17 +19,16 @@ export const getAllAmPrayerReportService = async (
       query = { ...query, hallId: hallId._id };
       delete query.hall;
     }
-    console.log(query);
-    const AmPrayerReport = await AmPrayerReportModel.find(query)
+    const EvangelismReport = await EvangelismReportModel.find(query)
       .limit(limit * 1)
       .skip((page - 1) * limit)
       .populate('hallId')
       .exec();
-    const total = await AmPrayerReportModel.countDocuments(query);
+    const total = await EvangelismReportModel.countDocuments(query);
     const totalPages = Math.floor(total / limit);
     const result = {
       limit,
-      AmPrayerReport,
+      EvangelismReport,
       totalPages,
       currentPage: page,
     };

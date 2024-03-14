@@ -40,8 +40,8 @@ class SchoolControllers {
     try {
       const { limit, page, department, school, schoolCode } = req.query;
       const option: ICustomInterface = {
-        limit: limit ? parseInt(limit as string) : 10,
-        page: page ? parseInt(page as string) : 1,
+        limit: parseInt(limit as string),
+        page: parseInt(page as string),
       };
 
       const query: ICustomInterface = {};

@@ -1,9 +1,9 @@
 import { NextFunction } from 'express';
-import { IPmPrayerReport, ICustomInterface } from 'interfaces';
-import { PmPrayerReportModel, HallModel } from '../../../models';
-import { CustomError } from '../../../utils/response/custom-error/customError';
+import { IAmPrayerReport, ICustomInterface } from 'interfaces';
+import { AmPrayerReportModel, HallModel } from '../../models';
+import { CustomError } from '../../utils/response/custom-error/customError';
 
-export const getAllPmPrayerReportService = async (
+export const getAllAmPrayerReportService = async (
   query: ICustomInterface,
   option: ICustomInterface,
   next: NextFunction,
@@ -19,16 +19,17 @@ export const getAllPmPrayerReportService = async (
       query = { ...query, hallId: hallId._id };
       delete query.hall;
     }
-    const PmPrayerReport = await PmPrayerReportModel.find(query)
+    console.log(query);
+    const AmPrayerReport = await AmPrayerReportModel.find(query)
       .limit(limit * 1)
       .skip((page - 1) * limit)
       .populate('hallId')
       .exec();
-    const total = await PmPrayerReportModel.countDocuments(query);
+    const total = await AmPrayerReportModel.countDocuments(query);
     const totalPages = Math.floor(total / limit);
     const result = {
       limit,
-      PmPrayerReport,
+      AmPrayerReport,
       totalPages,
       currentPage: page,
     };

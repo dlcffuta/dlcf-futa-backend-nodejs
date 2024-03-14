@@ -1,8 +1,8 @@
 import { NextFunction } from 'express';
 
 import { IAmPrayerReport } from 'interfaces';
-import { AmPrayerReportModel } from '../../../models';
-import { CustomError } from '../../../utils/response/custom-error/customError';
+import { AmPrayerReportModel } from '../../models';
+import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const getAmPrayerReportByIdService = async (
   id: string,
