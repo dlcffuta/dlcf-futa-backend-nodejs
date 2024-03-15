@@ -4,6 +4,7 @@ declare namespace NodeJS {
     PORT: string;
     DATABASE_URI: string;
     ADMIN_JWT_SECRET: string;
+    USER_JWT_SECRET: string;
     JWT_EXPIRATION: string;
     BACKEND_BASE_URL: string;
     APP_NAME: string;

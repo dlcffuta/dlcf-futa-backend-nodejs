@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-import { IUnit } from './index';
+import { IUnit, IPermission } from './index';
 
 export interface IUnitRepresentative {
   workerId: string;
@@ -12,6 +12,9 @@ export interface IUnitRepresentative {
     path: string;
     fileName: string;
   };
+  permission: string | IPermission;
+  deletedAt: Date
+  deleted: boolean
 }
 
 export interface IUnitRepresentativeDocument extends IUnitRepresentative, Document {}

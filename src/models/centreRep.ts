@@ -5,6 +5,7 @@ import { ICentreRepresentative, ICentreRepresentativeDocument } from '../interfa
 const ICentreRepresentativechemaField: Record<keyof ICentreRepresentative, unknown> = {
   workerId: { type: Schema.Types.ObjectId, ref: 'Worker', required: true },
   centreId: { type: Schema.Types.ObjectId, ref: 'Centre', required: true },
+  permission: { type: Schema.Types.ObjectId, ref: 'Permission', required: true },
   centerRepName: { type: String, required: true },
   centerRepEmail: { type: String, required: true },
   centerRepPhone: { type: String, required: true },
@@ -12,6 +13,8 @@ const ICentreRepresentativechemaField: Record<keyof ICentreRepresentative, unkno
     path: { type: String },
     fileName: { type: String },
   },
+  deletedAt: { type: Date, default: null },
+  deleted: { type: Boolean, default: false }
 };
 
 const CentreRepresentativeSchema = new Schema(ICentreRepresentativechemaField, {

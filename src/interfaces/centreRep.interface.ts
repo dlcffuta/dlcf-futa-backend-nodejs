@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-import { ICentre } from './index';
+import { ICentre, IPermission } from './index';
 
 export interface ICentreRepresentative {
   workerId: string;
@@ -12,6 +12,9 @@ export interface ICentreRepresentative {
     path: string;
     fileName: string;
   };
+  permission: string | IPermission;
+  deletedAt: Date
+  deleted: boolean
 }
 
 export interface ICentreRepresentativeDocument extends ICentreRepresentative, Document {}

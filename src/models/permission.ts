@@ -4,6 +4,9 @@ import { IPermission, IPermissionDocument } from '../interfaces';
 
 const PermissionSchemaField: Record<keyof IPermission, unknown> = {
   admin: { type: Schema.Types.ObjectId, ref: 'Admins' },
+  unitRep: { type: Schema.Types.ObjectId, ref: 'UnitReps' },
+  centreRep: { type: Schema.Types.ObjectId, ref: 'CentreReps' },
+  hallRep: { type: Schema.Types.ObjectId, ref: 'HallReps' },
   centre: {
     create: { type: Boolean, default: false },
     read: { type: Boolean, default: false },

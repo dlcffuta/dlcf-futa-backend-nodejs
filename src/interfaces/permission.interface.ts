@@ -11,6 +11,9 @@ export interface IPermissionCheck {
 
 export interface IPermission {
   admin: string | IAdmin;
+  unitRep: string;
+  centreRep: string;
+  hallRep: string;
   centre: IPermissionCheck;
   member: IPermissionCheck;
   worker: IPermissionCheck;

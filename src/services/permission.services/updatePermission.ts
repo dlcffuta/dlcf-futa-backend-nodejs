@@ -5,7 +5,7 @@ import { IPermission } from '../../interfaces';
 import { PermissionModel } from '../../models';
 import { CustomError } from '../../utils/response/custom-error/customError';
 
-export const getPermissionByIdService = async (
+export const updatePermissionService = async (
   id: string,
   payload: UpdateQuery<IPermission>,
   next: NextFunction,

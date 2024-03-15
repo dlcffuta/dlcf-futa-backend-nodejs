@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-import { IHall } from './index';
+import { IHall, IPermission } from './index';
 
 export interface IHallRepresentative {
   workerId: string;
@@ -12,6 +12,9 @@ export interface IHallRepresentative {
     path: string;
     fileName: string;
   };
+  permission: string | IPermission;
+  deletedAt: Date
+  deleted: boolean
 }
 
 export interface IHallRepresentativeDocument extends IHallRepresentative, Document {}

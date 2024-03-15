@@ -4,7 +4,7 @@ import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import { Container } from 'typedi';
 
 import WorkerControllers from '../controllers/worker.controller';
-import { checkPermission, checkUserJwt } from '../middlewares';
+import { checkPermission, checkAdminJwt } from '../middlewares';
 import { multerOpts } from '../utils/cloudinary';
 
 const storage = new CloudinaryStorage(multerOpts);
@@ -18,9 +18,9 @@ const router = Router();
 
 router.post('/', workerController.createWorker);
 router.put('/:id', upload.single('profilePicture'), workerController.uploadProfilePicture);
-router.get('/', [checkUserJwt, checkPermission], workerController.getAllWorkers);
-router.get('/:id', [checkUserJwt, checkPermission], workerController.getWorkerById);
-router.patch('/:id', [checkUserJwt, checkPermission], workerController.updateWorker);
-router.delete('/:id', [checkUserJwt, checkPermission], workerController.deleteWorker);
+router.get('/', [checkAdminJwt, checkPermission], workerController.getAllWorkers);
+router.get('/:id', [checkAdminJwt, checkPermission], workerController.getWorkerById);
+router.patch('/:id', [checkAdminJwt, checkPermission], workerController.updateWorker);
+router.delete('/:id', [checkAdminJwt, checkPermission], workerController.deleteWorker);
 
 export default router;

@@ -7,6 +7,7 @@ export const NODE_ENV = process.env.NODE_ENV;
 export const PORT = process.env.PORT;
 export const DATABASE_URI = process.env.DATABASE_URI;
 export const ADMIN_JWT_SECRET = process.env.ADMIN_JWT_SECRET;
+export const USER_JWT_SECRET = process.env.USER_JWT_SECRET;
 export const JWT_EXPIRATION = process.env.JWT_EXPIRATION;
 export const BACKEND_BASE_URL = process.env.BACKEND_BASE_URL;
 export const HELLO_ADDRESS = process.env.HELLO_ADDRESS;
