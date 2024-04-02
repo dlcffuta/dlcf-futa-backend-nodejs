@@ -10,7 +10,7 @@ export const getAllHallRepresentativeService = async (
   next: NextFunction,
 ): Promise<void | object> => {
   try {
-      const { page, limit } = option as { page: number; limit: number };
+    const { page, limit } = option as { page: number; limit: number };
     const hallRep = await HallRepresentativeModel.find(query)
       .limit(limit * 1)
       .skip((page - 1) * limit);

@@ -16,7 +16,7 @@ export const uploadHallRepProfilePictureService = async (
     }
     const uploadProfilePicture = await HallRepresentativeModel.findByIdAndUpdate(
       { _id: id },
-        { hallRepImage: { path: image } },
+      { hallRepImage: { path: image } },
       { new: true },
     );
     return uploadProfilePicture;

@@ -13,8 +13,8 @@ export interface IHallRepresentative {
     fileName: string;
   };
   permission: string | IPermission;
-  deletedAt: Date
-  deleted: boolean
+  deletedAt: Date;
+  deleted: boolean;
 }
 
 export interface IHallRepresentativeDocument extends IHallRepresentative, Document {}

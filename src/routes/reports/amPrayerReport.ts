@@ -9,8 +9,20 @@ const amPrayerReportController = Container.get(AmPrayerReportController);
 
 router.post('/', [checkHallRepJwt, checkPermission], amPrayerReportController.createAmPrayerReport);
 router.get('/', [checkHallRepJwt, checkPermission], amPrayerReportController.getAllAmPrayerReport);
-router.get('/:id', [checkHallRepJwt, checkPermission], amPrayerReportController.getAmPrayerReportById);
-router.put('/:id', [checkHallRepJwt, checkPermission], amPrayerReportController.updateAmPrayerReport);
-router.delete('/:id', [checkHallRepJwt, checkPermission], amPrayerReportController.deleteAmPrayerReport);
+router.get(
+  '/:id',
+  [checkHallRepJwt, checkPermission],
+  amPrayerReportController.getAmPrayerReportById,
+);
+router.put(
+  '/:id',
+  [checkHallRepJwt, checkPermission],
+  amPrayerReportController.updateAmPrayerReport,
+);
+router.delete(
+  '/:id',
+  [checkHallRepJwt, checkPermission],
+  amPrayerReportController.deleteAmPrayerReport,
+);
 
 export default router;

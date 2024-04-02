@@ -14,7 +14,7 @@ const UnitRepresentativeSchemaField: Record<keyof IUnitRepresentative, unknown> 
     fileName: { type: String },
   },
   deletedAt: { type: Date, default: null },
-  deleted: { type: Boolean, default: false }
+  deleted: { type: Boolean, default: false },
 };
 
 const UnitRepresentativeSchema = new Schema(UnitRepresentativeSchemaField, {

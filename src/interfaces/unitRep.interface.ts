@@ -13,8 +13,8 @@ export interface IUnitRepresentative {
     fileName: string;
   };
   permission: string | IPermission;
-  deletedAt: Date
-  deleted: boolean
+  deletedAt: Date;
+  deleted: boolean;
 }
 
 export interface IUnitRepresentativeDocument extends IUnitRepresentative, Document {}

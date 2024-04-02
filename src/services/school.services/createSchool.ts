@@ -17,8 +17,14 @@ export const createSchoolService = async (payload: ISchool, next: NextFunction) 
     const newSchool = await SchoolModel.create({
       school: payload.school,
       schoolCode: payload.schoolCode,
-      department: payload.department,
     });
+    payload.department.forEach(async (dept) => {
+      newSchool.department.push({
+        slug: dept.slug,
+        name: dept.name,
+      });
+    });
+    await newSchool.save();
     return newSchool;
   } catch (error) {
     return next(new CustomError(500, 'Raw', 'Internal Server Error', error.message));

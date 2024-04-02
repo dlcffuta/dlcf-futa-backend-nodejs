@@ -13,8 +13,8 @@ export interface ICentreRepresentative {
     fileName: string;
   };
   permission: string | IPermission;
-  deletedAt: Date
-  deleted: boolean
+  deletedAt: Date;
+  deleted: boolean;
 }
 
 export interface ICentreRepresentativeDocument extends ICentreRepresentative, Document {}

@@ -60,6 +60,8 @@ try {
   const accessLogStream = fs.createWriteStream(path.join(__dirname, '../log/access.log'), {
     flags: 'a',
   });
+  console.log(path.join(__dirname))
+  console.log(accessLogStream)
   app.use(morgan('combined', { stream: accessLogStream }));
 } catch (error) {
   console.log(error);

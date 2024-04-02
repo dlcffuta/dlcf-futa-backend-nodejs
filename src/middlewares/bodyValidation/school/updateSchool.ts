@@ -7,7 +7,7 @@ import { CustomError } from '../../../utils/response/custom-error/customError';
 export const updateSchoolSchema: joi.ObjectSchema<ISchool> = joi.object({
   schoolCode: joi.string().valid(...Object.values(ESchoolCode)),
   school: joi.object().valid(...Object.values(ESchool)),
-  department: joi.object(),
+  department: joi.array(),
 });
 
 export const updateSchool = async (req: Request, res: Response, next: NextFunction) => {

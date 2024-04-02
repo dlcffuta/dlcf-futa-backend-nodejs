@@ -13,7 +13,7 @@ export const createSchoolSchema: joi.ObjectSchema<ISchool> = joi.object({
     .object()
     .required()
     .valid(...Object.values(ESchool)),
-  department: joi.object().required(),
+  department: joi.array().required(),
 });
 
 export const addSchool = async (req: Request, res: Response, next: NextFunction) => {

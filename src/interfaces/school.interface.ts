@@ -36,7 +36,10 @@ export enum ESchool {
 export interface ISchool {
   school: string | ESchool;
   schoolCode: string | ESchoolCode;
-  department: ICustomInterface;
+  department: Array<{
+    slug: string;
+    name: string;
+  }>;
 }
 
 export interface ISchoolDocument extends ISchool, Document {}

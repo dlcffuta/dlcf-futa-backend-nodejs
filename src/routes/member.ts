@@ -4,7 +4,7 @@ import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import { Container } from 'typedi';
 
 import MemberControllers from '../controllers/member.controller';
-import { checkPermission, checkAdminJwt } from '../middlewares';
+import { checkPermission, checkAdminJwt, registerMember } from '../middlewares';
 import { multerOpts } from '../utils/cloudinary';
 
 const storage = new CloudinaryStorage(multerOpts);
@@ -16,7 +16,7 @@ const memberController = Container.get(MemberControllers);
 // We use express.Router() to create a new router object
 const router = Router();
 
-router.post('/', memberController.createMember);
+router.post('/', registerMember, memberController.createMember);
 router.put('/:id', upload.single('profilePicture'), memberController.uploadProfilePicture);
 router.get('/', [checkAdminJwt, checkPermission], memberController.getAllMembers);
 router.get('/:id', [checkAdminJwt, checkPermission], memberController.getMemberById);

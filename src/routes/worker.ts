@@ -4,7 +4,7 @@ import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import { Container } from 'typedi';
 
 import WorkerControllers from '../controllers/worker.controller';
-import { checkPermission, checkAdminJwt } from '../middlewares';
+import { checkPermission, checkAdminJwt, addWorker } from '../middlewares';
 import { multerOpts } from '../utils/cloudinary';
 
 const storage = new CloudinaryStorage(multerOpts);
@@ -16,11 +16,11 @@ const workerController = Container.get(WorkerControllers);
 // We use express.Router() to create a new router object
 const router = Router();
 
-router.post('/', workerController.createWorker);
+router.post('/', addWorker, workerController.createWorker);
 router.put('/:id', upload.single('profilePicture'), workerController.uploadProfilePicture);
 router.get('/', [checkAdminJwt, checkPermission], workerController.getAllWorkers);
 router.get('/:id', [checkAdminJwt, checkPermission], workerController.getWorkerById);
-router.patch('/:id', [checkAdminJwt, checkPermission], workerController.updateWorker);
+router.patch('/:id', [checkAdminJwt, checkPermission, addWorker], workerController.updateWorker);
 router.delete('/:id', [checkAdminJwt, checkPermission], workerController.deleteWorker);
 
 export default router;

@@ -14,7 +14,7 @@ const ICentreRepresentativechemaField: Record<keyof ICentreRepresentative, unkno
     fileName: { type: String },
   },
   deletedAt: { type: Date, default: null },
-  deleted: { type: Boolean, default: false }
+  deleted: { type: Boolean, default: false },
 };
 
 const CentreRepresentativeSchema = new Schema(ICentreRepresentativechemaField, {

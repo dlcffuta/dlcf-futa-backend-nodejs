@@ -5,7 +5,7 @@ import { ESchoolCode, ESchool, ISchool, ISchoolDocument } from '../interfaces';
 const SchoolSchemaField: Record<keyof ISchool, unknown> = {
   school: { type: String, enum: ESchool, required: true },
   schoolCode: { type: String, enum: ESchoolCode, required: true },
-  department: { type: Object, required: true },
+  department: { type: Array, required: true },
 };
 
 const SchoolSchema = new Schema(SchoolSchemaField, {

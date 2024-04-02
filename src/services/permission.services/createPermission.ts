@@ -1,7 +1,13 @@
 import { NextFunction } from 'express';
 
 import { IPermission } from '../../interfaces';
-import { PermissionModel, AdminModel, HallRepresentativeModel, UnitRepresentativeModel, CentreRepresentativeModel} from '../../models';
+import {
+  PermissionModel,
+  AdminModel,
+  HallRepresentativeModel,
+  UnitRepresentativeModel,
+  CentreRepresentativeModel,
+} from '../../models';
 import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const createPermissionService = async (
@@ -37,7 +43,7 @@ export const createPermissionService = async (
       hallRep.permission = permission._id;
       await hallRep.save();
       return permission;
-    };
+    }
 
     const unitRep = await UnitRepresentativeModel.findById({ _id: id });
     if (unitRep) {
@@ -48,7 +54,7 @@ export const createPermissionService = async (
       unitRep.permission = permission._id;
       await unitRep.save();
       return permission;
-    };
+    }
 
     const centreRep = await CentreRepresentativeModel.findById({ _id: id });
     if (centreRep) {
@@ -59,7 +65,7 @@ export const createPermissionService = async (
       centreRep.permission = permission._id;
       await centreRep.save();
       return permission;
-    };
+    }
 
     return 'Invalid ID provided';
   } catch (error) {

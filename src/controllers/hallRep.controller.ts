@@ -6,8 +6,8 @@ import {
   createHallRepService,
   getHallRepresentativeByIdService,
   getAllHallRepresentativeService,
-    uploadHallRepProfilePictureService,
-    updateHallRepresentativeService,
+  uploadHallRepProfilePictureService,
+  updateHallRepresentativeService,
 } from '../services/hallRep.services';
 import { uploadFile } from '../utils/cloudinary';
 import { CustomError } from '../utils/response/custom-error/customError';
@@ -79,18 +79,18 @@ class HallRepresentativeControllers {
     } catch (error) {
       next(error);
     }
-    };
-    
-    updateHallRepresentative = async (req: Request, res: Response, next: NextFunction) => {
-        try {
-            const data = await updateHallRepresentativeService(req.params.id, req.body, next);
+  };
+
+  updateHallRepresentative = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const data = await updateHallRepresentativeService(req.params.id, req.body, next);
       if (data != null) {
         res.customSuccess(200, 'HallRepresentative updated successfully', data);
       }
-        } catch (error) {
-            next(error)
-        }
+    } catch (error) {
+      next(error);
     }
+  };
 
   // To be implemented:
   // 1. moveHallRepresentativeToAnotherUnit

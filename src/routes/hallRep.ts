@@ -16,10 +16,31 @@ const hallRepresentativeController = Container.get(HallRepresentativeControllers
 // We use express.Router() to create a new router object
 const router = Router();
 
-router.post('/', [checkAdminJwt, checkPermission], hallRepresentativeController.createHallRepresentative);
-router.put('/:id', [checkHallRepJwt, checkPermission], upload.single('profilePicture'), hallRepresentativeController.uploadProfilePicture);
-router.get('/', [checkHallRepJwt, checkPermission], hallRepresentativeController.getAllHallRepresentatives);
-router.get('/:id', [checkHallRepJwt, checkPermission], hallRepresentativeController.getHallRepresentativeById);
-router.patch('/:id', [checkHallRepJwt, checkPermission], hallRepresentativeController.updateHallRepresentative);
+router.post(
+  '/',
+  [checkAdminJwt, checkPermission],
+  hallRepresentativeController.createHallRepresentative,
+);
+router.put(
+  '/:id',
+  [checkHallRepJwt, checkPermission],
+  upload.single('profilePicture'),
+  hallRepresentativeController.uploadProfilePicture,
+);
+router.get(
+  '/',
+  [checkHallRepJwt, checkPermission],
+  hallRepresentativeController.getAllHallRepresentatives,
+);
+router.get(
+  '/:id',
+  [checkHallRepJwt, checkPermission],
+  hallRepresentativeController.getHallRepresentativeById,
+);
+router.patch(
+  '/:id',
+  [checkHallRepJwt, checkPermission],
+  hallRepresentativeController.updateHallRepresentative,
+);
 
 export default router;

@@ -15,7 +15,11 @@ export const updateHallRepresentativeService = async (
     if (!existingHallRepresentative) {
       return next(new CustomError(400, 'General', "HallRepresentative ID is doesn't exist!"));
     }
-    const updatedHallRepresentative = await HallRepresentativeModel.findByIdAndUpdate({ _id: id }, payload, { new: true });
+    const updatedHallRepresentative = await HallRepresentativeModel.findByIdAndUpdate(
+      { _id: id },
+      payload,
+      { new: true },
+    );
     return updatedHallRepresentative;
   } catch (error) {
     return next(new CustomError(500, 'Raw', 'Internal server', error.message));
