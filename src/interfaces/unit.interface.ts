@@ -3,12 +3,16 @@ import { Document } from 'mongoose';
 export enum EUnitType {
   CHOIR = 'choir',
   COLPORTEUR = 'colporteur',
+  USHERING = "ushering",
+  LIBRARY = "library",
   EVANGELISM = 'evangelism',
   MAINTENANCE = 'maintenance',
-  MEDIA = 'media',
+  SECRETARIAL = "secretarial",
+  GPT = 'gpt/smat',
   PRAYER = 'prayer',
   SECURITY = 'security',
   ACADEMICS = 'academics',
+  LOGISTIC = "logistics"
 }
 export interface IUnit {
   unitType: EUnitType;

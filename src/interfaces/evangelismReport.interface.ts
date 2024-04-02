@@ -1,9 +1,9 @@
 import { Document } from 'mongoose';
 
 export enum EStatus {
-  Saved = 'Saved',
-  NotSaved = 'Not Saved',
-  NotSure = 'Not Sure',
+  Saved = 'saved',
+  NotSaved = 'not Saved',
+  NotSure = 'not Sure',
 }
 export interface IEvengelismReport {
   hallId: string;
