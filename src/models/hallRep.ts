@@ -1,7 +1,7 @@
 import { IHallRepresentative, IHallRepresentativeDocument } from '../interfaces';
 import { Schema, model } from 'mongoose';
 
-const IHallRepresentativeSchemaField: Record<keyof IHallRepresentative, any> = {
+const IHallRepresentativeSchemaField: Record<keyof IHallRepresentative, unknown> = {
   workerId: { type: Schema.Types.ObjectId, required: true, ref: 'Worker' },
   hallId: { type: Schema.Types.ObjectId, required: true, ref: 'Hall' },
   permission: { type: Schema.Types.ObjectId, required: true, ref: 'Permission' },

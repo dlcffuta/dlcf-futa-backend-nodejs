@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import AmPrayerReportController from '../../controllers/reports.controller/amPrayerReport';
-import Container from 'typedi';
+import { Container } from 'typedi';
 import { checkPermission, checkHallRepJwt } from '../../middlewares';
 
 const router = Router();

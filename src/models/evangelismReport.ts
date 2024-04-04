@@ -1,7 +1,7 @@
 import { model, Schema } from 'mongoose';
 import { EStatus, IEvengelismReport, IEvengelismReportModel } from '../interfaces';
 
-const EvangelismSchemaField: Record<keyof IEvengelismReport, any> = {
+const EvangelismSchemaField: Record<keyof IEvengelismReport, unknown> = {
   hallId: { type: Schema.Types.ObjectId, ref: 'Hall', require: true },
   numberOfMembersWhoWent: { type: Number, require: true },
   date: { type: Date, require: true },

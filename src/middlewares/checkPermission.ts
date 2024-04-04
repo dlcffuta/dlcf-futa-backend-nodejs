@@ -10,10 +10,14 @@ export const checkPermission = async (
 ): Promise<void> => {
   try {
     const { jwtPayload, method, originalUrl } = req;
+
     if (!jwtPayload || !jwtPayload.permission) {
       return next(new CustomError(401, 'General', 'Unauthorized'));
     }
-    const permission = await getPermissionByIdService(jwtPayload.permission, next);
+    const permission: { [key: string]: any } | void = await getPermissionByIdService(
+      jwtPayload.permission,
+      next,
+    );
     if (!permission || typeof permission !== 'object') {
       return next(new CustomError(401, 'General', 'Unauthorized'));
     }
@@ -28,15 +32,23 @@ export const checkPermission = async (
     const methodAction = mapMethod[method];
     const pathPrefix = originalUrl.split('/')[1];
 
-    for (const each_permission in permission) {
-      if (pathPrefix.startsWith(each_permission.substring(0, 2))) {
-        if (permission[each_permission][methodAction]) {
-          return next();
-        }
+    if (pathPrefix === 'dlcfcampus') { 
+      let pathPrefix2 = pathPrefix.replace('c', 'C')
+      if (!(pathPrefix2 in permission)) {
+        return next(new CustomError(403, 'General', 'Access denied'));
+      }
+      if (!permission[pathPrefix2][methodAction]) {
         return next(new CustomError(403, 'General', 'Access denied'));
       }
     }
 
+    if (!(pathPrefix in permission)) {
+      return next(new CustomError(403, 'General', 'Access denied'));
+    }
+    if (!permission[pathPrefix][methodAction]) {
+      return next(new CustomError(403, 'General', 'Access denied'));
+    }
+  
     return next();
   } catch (error) {
     return next(new CustomError(500, 'Raw', 'Internal server', error.message));

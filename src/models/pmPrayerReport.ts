@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 import { IPmPrayerReport, IPmPrayerReportModel } from '../interfaces';
 
-const PmPrayerReportSchemaField: Record<keyof IPmPrayerReport, any> = {
+const PmPrayerReportSchemaField: Record<keyof IPmPrayerReport, unknown> = {
   hallId: { type: Schema.Types.ObjectId, ref: 'Hall', require: true },
   numberOfBrother: { type: Number, require: true },
   numberOfSister: { type: Number, require: true },

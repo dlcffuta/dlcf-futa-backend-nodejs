@@ -1,5 +1,4 @@
 import { Document } from 'mongoose';
-import { ICustomInterface } from './custom.interface';
 
 export enum ESchoolCode {
   SEET = 'seet',

@@ -1,7 +1,7 @@
 import { IHall, IHallDocument, ICentreDocument } from 'interfaces';
 import { Schema, model } from 'mongoose';
 
-const IHallSchemaField: Record<keyof IHall, any> = {
+const IHallSchemaField: Record<keyof IHall, unknown> = {
   name: { type: String, required: true },
   location: { type: String, required: true },
   centre: { type: Schema.Types.ObjectId, required: true, ref: 'Centre' },

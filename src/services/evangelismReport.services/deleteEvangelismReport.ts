@@ -1,4 +1,4 @@
-import { NextFunction } from 'connect';
+import { NextFunction } from 'express';
 import { IEvengelismReport } from 'interfaces';
 import { EvangelismReportModel } from '../../models';
 

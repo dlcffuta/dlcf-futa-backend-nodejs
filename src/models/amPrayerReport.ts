@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 import { IAmPrayerReport, IAmPrayerReportModel } from '../interfaces';
 
-const AmPrayerReportSchemaField: Record<keyof IAmPrayerReport, any> = {
+const AmPrayerReportSchemaField: Record<keyof IAmPrayerReport, unknown> = {
   hallId: { type: Schema.Types.ObjectId, ref: 'Hall', require: true },
   numberOfBrother: { type: Number, require: true },
   numberOfSister: { type: Number, require: true },

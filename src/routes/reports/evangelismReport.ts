@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import EvangelismReportController from '../../controllers/reports.controller/evangelismReport';
-import Container from 'typedi';
+import { Container } from 'typedi';
 import { checkPermission, checkHallRepJwt } from '../../middlewares';
 
 const router = Router();

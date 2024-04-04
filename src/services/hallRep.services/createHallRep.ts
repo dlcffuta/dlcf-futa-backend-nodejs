@@ -7,7 +7,7 @@ import { CustomError } from '../../utils/response/custom-error/customError';
 export const createHallRepService = async (payload: IHallRepresentative, next: NextFunction) => {
   try {
     const worker = await WorkerModel.findOne({ email: payload.hallRepEmail });
-    console.log(worker)
+    
     if (!worker) {
       return next(new CustomError(400, 'General', `Worker doesn't exist`));
     }
@@ -26,7 +26,6 @@ export const createHallRepService = async (payload: IHallRepresentative, next: N
     await newHallRep.save();
     return newHallRep;
   } catch (error) {
-    console.log(error)
     return next(new CustomError(500, 'Raw', 'Internal server error', error.message));
   }
 };

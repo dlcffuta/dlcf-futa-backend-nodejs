@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import PmPrayerReportController from '../../controllers/reports.controller/pmPrayerReport';
-import Container from 'typedi';
-import { checkPermission, checkHallRepJwt, addHall } from '../../middlewares';
+import { Container } from 'typedi';
+import { checkPermission, checkHallRepJwt } from '../../middlewares';
 
 const router = Router();
 

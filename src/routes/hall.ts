@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import HallControllers from '../controllers/hall.controller';
-import Container from 'typedi';
+import { Container } from 'typedi';
 import { checkPermission, checkAdminJwt, addHall } from '../middlewares';
 
 const router = Router();

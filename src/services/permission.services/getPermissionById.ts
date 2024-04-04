@@ -3,7 +3,10 @@ import { NextFunction } from 'express';
 import { PermissionModel } from '../../models';
 import { CustomError } from '../../utils/response/custom-error/customError';
 
-export const getPermissionByIdService = async (id: string, next: NextFunction) => {
+export const getPermissionByIdService = async (
+  id: string,
+  next: NextFunction,
+): Promise<object | void> => {
   try {
     const permission = await PermissionModel.findById(id);
     if (!permission) {

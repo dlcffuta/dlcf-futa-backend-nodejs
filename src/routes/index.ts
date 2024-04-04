@@ -11,6 +11,7 @@ import pmPrayerReportRoute from './reports/pmPrayerReport';
 import evangelismReportRoute from './reports/evangelismReport';
 import koinoniaReportRoute from './reports/koinoniaReport';
 import hallRepresentativeRoutes from './hallRep';
+import unitRoutes from './unit';
 
 const router = Router();
 
@@ -25,6 +26,7 @@ router.use('/report/morning_prayer', amPrayerReportRoute);
 router.use('/report/evening_prayer', pmPrayerReportRoute);
 router.use('/report/evangelism', evangelismReportRoute);
 router.use('/report/koinonia', koinoniaReportRoute);
-router.use('/hallrep', hallRepresentativeRoutes)
+router.use('/hallrep', hallRepresentativeRoutes);
+router.use('/unit', unitRoutes);
 
 export default router;

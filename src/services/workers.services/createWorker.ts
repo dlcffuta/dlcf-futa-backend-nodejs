@@ -27,7 +27,7 @@ export const createWorkerService = async (
       return next(new CustomError(404, 'General', 'Hall does not exist'));
     }
 
-    const unit = await UnitModel.findOne({ name: payload.unit });
+    const unit = await UnitModel.findOne({ unitType: payload.unit });
     if (!unit) {
       return next(new CustomError(404, 'General', 'Unit does not exist'));
     }

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import KoinoniaReportController from '../../controllers/reports.controller/koinoniaReport';
-import Container from 'typedi';
+import { Container } from 'typedi';
 import { checkPermission, checkHallRepJwt } from '../../middlewares';
 
 const router = Router();

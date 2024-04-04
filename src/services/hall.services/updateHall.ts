@@ -1,7 +1,7 @@
 import { NextFunction } from 'express';
 
 import { IHall } from '../../interfaces';
-import { HallModel, CentreModel } from '../../models';
+import { HallModel } from '../../models';
 import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const updateHallService = async (
