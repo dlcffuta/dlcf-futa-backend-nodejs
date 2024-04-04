@@ -1,4 +1,4 @@
-import { NextFunction } from 'connect';
+import { NextFunction } from 'express';
 import { IKoinoniaReport } from 'interfaces';
 import { KoinoniaReportModel, HallModel } from '../../models';
 

@@ -12,8 +12,8 @@ export const createEvangelismReportService = async (
     const existingHall = await HallModel.exists({ name: payload.hallId });
     if (!existingHall) {
       return next(new CustomError(400, 'General', 'Hall does not exist'));
-    };
-    
+    }
+
     const newReport = await EvangelismReportModel.create({
       hallId: existingHall._id,
       numberOfMembersWhoWent: payload.numberOfMembersWhoWent,

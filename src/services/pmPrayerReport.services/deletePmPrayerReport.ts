@@ -1,5 +1,4 @@
-import { NextFunction } from 'connect';
-import { IPmPrayerReport } from 'interfaces';
+import { NextFunction } from 'express';
 import { PmPrayerReportModel } from '../../models';
 
 import { CustomError } from '../../utils/response/custom-error/customError';

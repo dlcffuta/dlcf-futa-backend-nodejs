@@ -6,7 +6,6 @@ import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const createUnitService = async (payload: IUnit, next: NextFunction) => {
   try {
-
     const unitExist = await UnitModel.findOne({ unitType: payload.unitType });
     if (unitExist) {
       return next(

@@ -1,5 +1,5 @@
 import { NextFunction } from 'express';
-import { IPmPrayerReport, ICustomInterface } from 'interfaces';
+import { ICustomInterface } from 'interfaces';
 import { PmPrayerReportModel, HallModel } from '../../models';
 import { CustomError } from '../../utils/response/custom-error/customError';
 

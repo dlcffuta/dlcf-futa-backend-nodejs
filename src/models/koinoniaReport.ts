@@ -1,6 +1,5 @@
 import { Schema, model } from 'mongoose';
 import { IKoinoniaReport, IKoinoniaReportModel } from '../interfaces';
-import { number } from 'joi';
 
 const KoinoniaReportSchemaField: Record<keyof IKoinoniaReport, unknown> = {
   hallId: { type: Schema.Types.ObjectId, ref: 'Hall', require: true },

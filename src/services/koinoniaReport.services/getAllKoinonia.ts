@@ -1,5 +1,5 @@
 import { NextFunction } from 'express';
-import { IKoinoniaReport, ICustomInterface } from 'interfaces';
+import { ICustomInterface } from 'interfaces';
 import { KoinoniaReportModel, HallModel } from '../../models';
 import { CustomError } from '../../utils/response/custom-error/customError';
 

@@ -1,5 +1,4 @@
-import { NextFunction } from 'connect';
-import { IKoinoniaReport } from 'interfaces';
+import { NextFunction } from 'express';
 import { KoinoniaReportModel } from '../../models';
 
 import { CustomError } from '../../utils/response/custom-error/customError';

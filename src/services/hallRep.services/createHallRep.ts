@@ -7,7 +7,7 @@ import { CustomError } from '../../utils/response/custom-error/customError';
 export const createHallRepService = async (payload: IHallRepresentative, next: NextFunction) => {
   try {
     const worker = await WorkerModel.findOne({ email: payload.hallRepEmail });
-    
+
     if (!worker) {
       return next(new CustomError(400, 'General', `Worker doesn't exist`));
     }
