@@ -6,7 +6,7 @@ import { CustomError } from '../../utils/response/custom-error/customError';
 
 export const uploadWorkerProfilePictureService = async (
   id: string,
-  image: string,
+  image: { path: string; filename: string },
   next: NextFunction,
 ): Promise<void | IWorker> => {
   try {
@@ -16,7 +16,11 @@ export const uploadWorkerProfilePictureService = async (
     }
     const uploadProfilePicture = await WorkerModel.findByIdAndUpdate(
       { _id: id },
-      { imageUrl: image },
+      {
+        imageUrl: { 
+          path: image.path,
+          fileName: image.filename
+      } },
       { new: true },
     );
     return uploadProfilePicture;

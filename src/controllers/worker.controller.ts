@@ -103,12 +103,12 @@ class WorkerControllers {
 
   uploadProfilePicture = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const file = req.file;
-      if (!file) {
+      const { path, filename } = req.file;
+      if (!path) {
         return next(new CustomError(400, 'General', 'Please upload a file'));
-      }
-      const imageUrl = await uploadFile(file, 'profile-pictures');
-      const data = await uploadWorkerProfilePictureService(req.params.id, imageUrl as string, next);
+      };
+
+      const data = await uploadWorkerProfilePictureService(req.params.id, { path, filename }, next);
       if (data != null) {
         res.customSuccess(200, 'Profile picture uploaded successfully', data);
       }
