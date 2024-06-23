@@ -33,7 +33,7 @@ export const getAllHallService = async (
       totalPages,
       currentPage: page,
     };
-
+    console.log(hall);
     return result;
   } catch (error) {
     return next(new CustomError(500, 'Raw', 'Internal server', error.message));

@@ -106,7 +106,7 @@ class WorkerControllers {
       const { path, filename } = req.file;
       if (!path) {
         return next(new CustomError(400, 'General', 'Please upload a file'));
-      };
+      }
 
       const data = await uploadWorkerProfilePictureService(req.params.id, { path, filename }, next);
       if (data != null) {

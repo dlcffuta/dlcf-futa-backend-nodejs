@@ -1,9 +1,4 @@
 {
-  "*": [
-    "pretty-quick --staged"
-  ],
-  "*.{js,jsx,ts,tsx}": [
-    "eslint --max-warnings 0",
-    "tsc-files --noEmit"
-  ]
+  "*": ["pretty-quick --staged"],
+  "*.{js,jsx,ts,tsx}": ["eslint --max-warnings 0", "tsc-files --noEmit"]
 }

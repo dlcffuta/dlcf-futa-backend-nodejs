@@ -8,7 +8,7 @@ const hallController = Container.get(HallControllers);
 
 router.post('/', [checkAdminJwt, checkPermission, addHall], hallController.createHall);
 router.get('/', hallController.getAllHalls);
-router.get('/:id', [checkAdminJwt, checkPermission], hallController.getHallById);
+router.get('/:id', hallController.getHallById);
 router.put('/:id', [checkAdminJwt, checkPermission], hallController.updateHall);
 router.delete('/:id', [checkAdminJwt, checkPermission], hallController.deleteHall);
 

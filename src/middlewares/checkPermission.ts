@@ -14,10 +14,7 @@ export const checkPermission = async (
     if (!jwtPayload || !jwtPayload.permission) {
       return next(new CustomError(401, 'General', 'Unauthorized'));
     }
-    const permission = await getPermissionByIdService(
-      jwtPayload.permission,
-      next,
-    );
+    const permission = await getPermissionByIdService(jwtPayload.permission, next);
     if (!permission || typeof permission !== 'object') {
       return next(new CustomError(401, 'General', 'Unauthorized'));
     }

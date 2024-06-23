@@ -17,10 +17,11 @@ export const uploadWorkerProfilePictureService = async (
     const uploadProfilePicture = await WorkerModel.findByIdAndUpdate(
       { _id: id },
       {
-        imageUrl: { 
+        imageUrl: {
           path: image.path,
-          fileName: image.filename
-      } },
+          fileName: image.filename,
+        },
+      },
       { new: true },
     );
     return uploadProfilePicture;
