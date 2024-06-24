@@ -428,3 +428,8 @@
 ::1 - - [23/Jun/2024:17:22:33 +0000] "GET /hall/65eb6d7aae461444058d25d8 HTTP/1.1" 200 615 "-" "PostmanRuntime/7.39.0"
 ::1 - - [23/Jun/2024:17:23:15 +0000] "GET /hall/65eb6c78ae461444058d25bf HTTP/1.1" 200 605 "-" "PostmanRuntime/7.39.0"
 ::1 - - [23/Jun/2024:17:24:08 +0000] "GET /hall/65eb6c78ae461444058d25bf HTTP/1.1" 200 605 "-" "PostmanRuntime/7.39.0"
+::1 - - [24/Jun/2024:11:48:41 +0000] "GET /hall/ HTTP/1.1" 200 5065 "-" "PostmanRuntime/7.39.0"
+::1 - - [24/Jun/2024:11:52:35 +0000] "GET /hall/ HTTP/1.1" 200 10404 "-" "PostmanRuntime/7.39.0"
+::1 - - [24/Jun/2024:11:54:23 +0000] "GET /hall/ HTTP/1.1" 200 10504 "-" "PostmanRuntime/7.39.0"
+::1 - - [24/Jun/2024:11:56:52 +0000] "GET /hall/ HTTP/1.1" 200 10404 "-" "PostmanRuntime/7.39.0"
+::1 - - [24/Jun/2024:12:02:53 +0000] "GET /hall/ HTTP/1.1" 200 10504 "-" "PostmanRuntime/7.39.0"

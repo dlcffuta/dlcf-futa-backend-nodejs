@@ -15,8 +15,8 @@ export const getHallByIdService = async (id: string, next: NextFunction): Promis
     const workers = await WorkerModel.find({ hall: id });
     let maleCount = 0;
     let femaleCount = 0;
-    console.log({members})
-    console.log({workers})
+    console.log({ members });
+    console.log({ workers });
     if (members) {
       members.forEach((member) => {
         if (member.gender === 'male') {
