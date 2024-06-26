@@ -3,9 +3,11 @@
 - Description: A backend development for DLCF FUTA administration mangement application.
 
 ### To view the api documentation
+
 - You might need a postman deskop application installed and a good network connection to run it. Click 👉 [api documentation]()
 
 #### Basic Database design
+
 - Database used: NoSQL (Mongodb)
 
 ## Usage
@@ -89,7 +91,7 @@ const expect = chai.expect;
 import {  functionToTest } from "../src/services/result.services";
 ```
 
-- Run `yarn run test` or `npm run test` to run all tests. And to run a single file, modify using `mocha --require ts-node/register ./test/testFile1.ts --timeout 20000 --exit` to the test script in the package.json. 
+- Run `yarn run test` or `npm run test` to run all tests. And to run a single file, modify using `mocha --require ts-node/register ./test/testFile1.ts --timeout 20000 --exit` to the test script in the package.json.
 - Ensure you replace `testFile1.ts` with the actual name of the file
 
 ## Others
@@ -98,5 +100,3 @@ import {  functionToTest } from "../src/services/result.services";
 - Create the data model inside the `./src/models`
 - Create the interface inside the `./src/interface`
 - Run `yarn run commit` or `npm run commit` (a shorthand for git commit using Commitizen), to read the configuration from `./.czrc` and provides a guided interface to create a commit message.
-
-
