@@ -9,12 +9,12 @@ export interface IEvengelismReport {
   hallId: string;
   numberOfMembersWhoWent: number;
   date: Date;
-  nameOfPeopleMinisteredTo: {
+  nameOfPeopleMinisteredTo: Array<{
     firstName: string;
     lastName: string;
     phoneNumber: string;
     status: EStatus;
-  };
+  }>;
 }
 
 export interface IEvengelismReportModel extends IEvengelismReport, Document {}
