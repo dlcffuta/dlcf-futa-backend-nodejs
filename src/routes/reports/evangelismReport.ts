@@ -7,14 +7,9 @@ const router = Router();
 
 const evangelismReportController = Container.get(EvangelismReportController);
 
-router.post(
-  '/',
-  [checkHallRepJwt, checkPermission],
-  evangelismReportController.createEvangelismReport,
-);
+router.post('/', evangelismReportController.createEvangelismReport);
 router.get(
   '/',
-  [checkHallRepJwt, checkPermission],
   evangelismReportController.getAllEvangelismReport,
 );
 router.get(

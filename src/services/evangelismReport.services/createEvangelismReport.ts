@@ -18,12 +18,7 @@ export const createEvangelismReportService = async (
       hallId: existingHall._id,
       numberOfMembersWhoWent: payload.numberOfMembersWhoWent,
       date: payload.date,
-      nameOfPeopleMinisteredTo: {
-        firstName: payload.nameOfPeopleMinisteredTo.firstName,
-        lastName: payload.nameOfPeopleMinisteredTo.lastName,
-        phoneNumber: payload.nameOfPeopleMinisteredTo.phoneNumber,
-        status: payload.nameOfPeopleMinisteredTo.status,
-      },
+      nameOfPeopleMinisteredTo: payload.nameOfPeopleMinisteredTo,
     });
     return newReport;
   } catch (error) {

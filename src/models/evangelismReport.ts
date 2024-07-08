@@ -5,12 +5,7 @@ const EvangelismSchemaField: Record<keyof IEvengelismReport, unknown> = {
   hallId: { type: Schema.Types.ObjectId, ref: 'Hall', require: true },
   numberOfMembersWhoWent: { type: Number, require: true },
   date: { type: Date, require: true },
-  nameOfPeopleMinisteredTo: {
-    firstName: { type: String, require: true },
-    lastName: { type: String, require: true },
-    phoneNumber: { type: String, require: true },
-    status: { type: String, enum: EStatus, require: true },
-  },
+  nameOfPeopleMinisteredTo: { type: Array, require: true },
 };
 
 const EvangelismReportSchema = new Schema(EvangelismSchemaField, {
